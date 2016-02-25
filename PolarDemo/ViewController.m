@@ -133,29 +133,55 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
 
 #pragma mark - CBCharacteristic Helpers
 
-- (void)getHeartBPMData:(CBCharacteristic *)characteristic error:(NSError *)error {
+- (void) getHeartBPMData:(CBCharacteristic *)characteristic error:(NSError *)error {
+    // Get the BPM //
+    // https://developer.bluetooth.org/gatt/characteristics/Pages/CharacteristicViewer.aspx?u=org.bluetooth.characteristic.heart_rate_measurement.xml //
+    
+    // Convert the contents of the characteristic value to a data-object //
     NSData *data = characteristic.value;
     const uint8_t *reportData = data.bytes;
+    
+    // Initialise the offset variable //
+    NSUInteger offset = 1;
+    // Initialise the bpm variable //
     uint16_t bpm = 0;
     
-    //log all bytes
-    NSMutableString *string = [[NSMutableString alloc] init];
-    for (int i = 0; i < data.length; i++) {
-        uint16_t test = reportData[i];
-        [string appendFormat:@"%hu ", test];
-    }
-    NSLog(@"%@", string);
-    //end
-    
+    // Next, obtain the first byte at index 0 in the array as defined by reportData[0] and mask out all but the 1st bit //
+    // The result returned will either be 0, which means that the 2nd bit is not set, or 1 if it is set //
+    // If the 2nd bit is not set, retrieve the BPM value at the second byte location at index 1 in the array //
     if ((reportData[0] & 0x01) == 0) {
+        // Retrieve the BPM value for the Heart Rate Monitor
         bpm = reportData[1];
+        offset = offset + 1;
     } else {
+        // If the second bit is set, retrieve the BPM value at second byte location at index 1 in the array and //
+        // convert this to a 16-bit value based on the host’s native byte order //
         bpm = CFSwapInt16LittleToHost(*(uint16_t *)(&reportData[1]));
+        offset =  offset + 2; // Plus 2 bytes //
     }
-    if (characteristic.value || !error) {
-        self.heartRate = bpm;
-        self.heartRateLabel.text = [NSString stringWithFormat:@"%hu bpm", bpm];
-        [self doHeartBeat];
+    NSLog(@"bpm: %i", bpm);
+    
+    // Determine if EE data is present //
+    // If the 3rd bit of the first byte is 1 this means there is EE data //
+    // If so, increase offset with 2 bytes //
+    if ((reportData[0] & 0x03) == 1) {
+        offset =  offset + 2;
+    }
+    // Determine if RR-interval data is present //
+    // If the 4th bit of the first byte is 1 this means there is RR data //
+    if ((reportData[0] & 0x04) == 0) {
+        NSLog(@"%@", @"Data are not present");
+    } else {
+        // The number of RR-interval values is total bytes left / 2 (size of uint16) //
+        NSUInteger count = (data.length - offset) / 2;
+        NSLog(@"RR count: %lu", (unsigned long)count);
+        for (int i = 0; i < count; i++) {
+            // The unit for RR interval is 1 / 1024 seconds //
+            uint16_t value = CFSwapInt16LittleToHost(*(uint16_t *)(&reportData[offset]));
+            value = ((double)value / 1024.0 ) * 1000.0;
+            NSLog(@"RR value %lu: %u", (unsigned long)i, value);
+            offset = offset + 2;
+        }
     }
 }
 
