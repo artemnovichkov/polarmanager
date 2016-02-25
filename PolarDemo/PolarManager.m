@@ -7,6 +7,7 @@
 //
 
 #import "PolarManager.h"
+#import "CBUUID+Additions.h"
 
 static NSString *const kDeviceInformationUUID = @"180A";
 static NSString *const kHeartRateServiceUUID = @"180D";
@@ -20,12 +21,20 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
 @property (nonatomic) CBCentralManager *centralManager;
 @property (nonatomic) CBPeripheral *polarPeripheral;
 
+@property (nonatomic) NSMutableArray<NSNumber *> *storedBpms;
+@property (nonatomic) CGFloat averageBpm;
+
 @end
 
 @implementation PolarManager
 
 - (void)start {
     self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+    self.storedBpms = [NSMutableArray array];
+}
+
+- (void)stop {
+    [self.centralManager cancelPeripheralConnection:self.polarPeripheral];
 }
 
 #pragma mark - CBCentralManagerDelegate
@@ -79,19 +88,19 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(nullable NSError *)error {
-    if ([service.UUID isEqual:[CBUUID UUIDWithString:kHeartRateServiceUUID]]) {
+    if ([service.UUID isEqualToUUIDWithString:kHeartRateServiceUUID]) {
         for (CBCharacteristic *characteristic in service.characteristics) {
-            if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:kMeasurementCharacteristicUUID]]) {
+            if ([characteristic.UUID isEqualToUUIDWithString:kMeasurementCharacteristicUUID]) {
                 [self.polarPeripheral setNotifyValue:YES forCharacteristic:characteristic];
                 NSLog(@"Found heart rate measurement characteristic");
-            } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:kBodyLocationCharacteristicUUID]]) {
+            } else if ([characteristic.UUID isEqualToUUIDWithString:kBodyLocationCharacteristicUUID]) {
                 [self.polarPeripheral readValueForCharacteristic:characteristic];
                 NSLog(@"Found body sensor location characteristic");
             }
         }
-    } else if ([service.UUID isEqual:[CBUUID UUIDWithString:kDeviceInformationUUID]]) {
+    } else if ([service.UUID isEqualToUUIDWithString:kDeviceInformationUUID]) {
         for (CBCharacteristic *characteristic in service.characteristics) {
-            if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:kManufacturerNameCharacteristicUUID]]) {
+            if ([characteristic.UUID isEqualToUUIDWithString:kManufacturerNameCharacteristicUUID]) {
                 [self.polarPeripheral readValueForCharacteristic:characteristic];
                 NSLog(@"Found a device manufacturer name characteristic");
             }
@@ -100,13 +109,13 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error {
-    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:kMeasurementCharacteristicUUID]]) {
+    if ([characteristic.UUID isEqualToUUIDWithString:kMeasurementCharacteristicUUID]) {
         [self getHeartBPMData:characteristic error:error];
     }
-    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:kManufacturerNameCharacteristicUUID]]) {
+    if ([characteristic.UUID isEqualToUUIDWithString:kManufacturerNameCharacteristicUUID]) {
         [self getManufacturerName:characteristic];
     }
-    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:kBodyLocationCharacteristicUUID]]) {
+    if ([characteristic.UUID isEqualToUUIDWithString:kBodyLocationCharacteristicUUID]) {
         [self getBodyLocation:characteristic];
     }
 }
@@ -114,8 +123,8 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
 #pragma mark - CBCharacteristic Helpers
 
 - (void) getHeartBPMData:(CBCharacteristic *)characteristic error:(NSError *)error {
-    NSData *data = characteristic.value;
-    const uint8_t *reportData = data.bytes;
+    NSData *sensorData = characteristic.value;
+    const uint8_t *reportData = sensorData.bytes;
     
     NSUInteger offset = 1;
     uint16_t bpm = 0;
@@ -128,6 +137,8 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
         offset =  offset + 2; // Plus 2 bytes //
     }
     NSLog(@"bpm: %i", bpm);
+    [self.storedBpms addObject:@(bpm)];
+    self.averageBpm = [[self.storedBpms valueForKeyPath:@"@avg.self"] floatValue];
     
     if ((reportData[0] & 0x03) == 1) {
         offset =  offset + 2;
@@ -137,7 +148,7 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
     if ((reportData[0] & 0x04) == 0) {
         NSLog(@"%@", @"Data are not present");
     } else {
-        NSUInteger count = (data.length - offset) / 2;
+        NSUInteger count = (sensorData.length - offset) / 2;
         for (int i = 0; i < count; i++) {
             uint16_t rrValue = CFSwapInt16LittleToHost(*(uint16_t *)(&reportData[offset]));
             rrValue = ((double)rrValue / 1024.0 ) * 1000.0;
@@ -145,7 +156,7 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
             offset = offset + 2;
         }
     }
-    if (characteristic.value || !error) {
+    if (sensorData || !error) {
         HeartRateData *heartRateData = [[HeartRateData alloc] init];
         heartRateData.bpm = bpm;
         heartRateData.rrValues = rrValues;
@@ -160,15 +171,16 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
 
 - (void)getBodyLocation:(CBCharacteristic *)characteristic {
     NSData *sensorData = characteristic.value;
-    uint8_t *bodyData = (uint8_t *)sensorData.bytes;
+    const uint8_t *bodyData = sensorData.bytes;
+    NSString *bodyDataString;
     if (bodyData) {
         uint8_t bodyLocation = bodyData[0];
-        NSString *bodyDataString = [NSString stringWithFormat:@"Body Location: %@", bodyLocation == 1 ? @"Chest" : @"Undefined"];
-        NSLog(@"%@", bodyDataString);
+        bodyDataString = [NSString stringWithFormat:@"Body Location: %@", bodyLocation == 1 ? @"Chest" : @"Undefined"];
+        
     } else {
-        NSString *bodyDataString = @"Body Location: N/A";
-        NSLog(@"%@", bodyDataString);
+        bodyDataString = @"Body Location: N/A";
     }
+    NSLog(@"%@", bodyDataString);
 }
 
 @end
