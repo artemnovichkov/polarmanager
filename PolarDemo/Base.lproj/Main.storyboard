@@ -23,19 +23,41 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="CHs-ej-Drm">
+                                <rect key="frame" x="225" y="68" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="6fo-Os-wPI"/>
+                                    <constraint firstAttribute="height" constant="150" id="o4l-2N-8US"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4qc-e1-JWE">
+                                <rect key="frame" x="279" y="126" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="4qc-e1-JWE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3e0-wZ-CUh"/>
+                            <constraint firstItem="CHs-ej-Drm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="L1f-yf-rOg"/>
                             <constraint firstItem="Wlj-eW-ik6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ZJw-en-5Ki"/>
+                            <constraint firstItem="4qc-e1-JWE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="106" id="aSu-Rc-3nA"/>
+                            <constraint firstItem="CHs-ej-Drm" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="48" id="hWW-io-Yj9"/>
                             <constraint firstItem="Wlj-eW-ik6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tIX-nJ-vQ4"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="label" destination="Wlj-eW-ik6" id="NrH-RU-dcb"/>
+                        <outlet property="heartImageView" destination="CHs-ej-Drm" id="Gz8-vb-Fzw"/>
+                        <outlet property="heartRateLabel" destination="4qc-e1-JWE" id="mRL-Gd-G64"/>
+                        <outlet property="infoLabel" destination="Wlj-eW-ik6" id="qmd-54-w4Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="heart" width="2000" height="2000"/>
+    </resources>
 </document>
