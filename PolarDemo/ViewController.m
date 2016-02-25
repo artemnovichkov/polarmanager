@@ -138,6 +138,15 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
     const uint8_t *reportData = data.bytes;
     uint16_t bpm = 0;
     
+    //log all bytes
+    NSMutableString *string = [[NSMutableString alloc] init];
+    for (int i = 0; i < data.length; i++) {
+        uint16_t test = reportData[i];
+        [string appendFormat:@"%hu ", test];
+    }
+    NSLog(@"%@", string);
+    //end
+    
     if ((reportData[0] & 0x01) == 0) {
         bpm = reportData[1];
     } else {
