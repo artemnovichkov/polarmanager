@@ -7,8 +7,19 @@
 //
 
 #import "ViewController.h"
+@import CoreBluetooth;
 
-@interface ViewController ()
+static NSString *const kDeviceInformationUUID = @"180A";
+static NSString *const kHeartRateServiceUUID = @"180D";
+
+static NSString *const kMeasurementCharacteristicUUID = @"2A37";
+static NSString *const kBodyLocationCharacteristicUUID = @"2A38";
+static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
+
+@interface ViewController () <CBCentralManagerDelegate, CBPeripheralDelegate>
+
+@property (nonatomic) CBCentralManager *centralManager;
+@property (nonatomic) CBPeripheral *polarPeripheral;
 
 @end
 
@@ -16,12 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 @end
