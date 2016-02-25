@@ -7,15 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC2CF8D21C7EFFD3009028EA /* PolarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2CF8D11C7EFFD3009028EA /* PolarManager.m */; };
 		AC6156CC1C7EB5CE0026D81B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6156CB1C7EB5CE0026D81B /* main.m */; };
 		AC6156CF1C7EB5CE0026D81B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6156CE1C7EB5CE0026D81B /* AppDelegate.m */; };
 		AC6156D21C7EB5CE0026D81B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6156D11C7EB5CE0026D81B /* ViewController.m */; };
 		AC6156D51C7EB5CE0026D81B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6156D31C7EB5CE0026D81B /* Main.storyboard */; };
 		AC6156D71C7EB5CE0026D81B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC6156D61C7EB5CE0026D81B /* Assets.xcassets */; };
 		AC6156DA1C7EB5CE0026D81B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6156D81C7EB5CE0026D81B /* LaunchScreen.storyboard */; };
+		AC9A2CA21C7EFDB100DAEE68 /* HeartRateData.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A2CA11C7EFDB100DAEE68 /* HeartRateData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC2CF8D01C7EFFD3009028EA /* PolarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PolarManager.h; sourceTree = "<group>"; };
+		AC2CF8D11C7EFFD3009028EA /* PolarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PolarManager.m; sourceTree = "<group>"; };
 		AC6156C71C7EB5CE0026D81B /* PolarDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PolarDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC6156CB1C7EB5CE0026D81B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AC6156CD1C7EB5CE0026D81B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -26,6 +30,9 @@
 		AC6156D61C7EB5CE0026D81B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC6156D91C7EB5CE0026D81B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC6156DB1C7EB5CE0026D81B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC9A2CA01C7EFDB100DAEE68 /* HeartRateData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartRateData.h; sourceTree = "<group>"; };
+		AC9A2CA11C7EFDB100DAEE68 /* HeartRateData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeartRateData.m; sourceTree = "<group>"; };
+		AC9A2CA31C7EFDCC00DAEE68 /* HeartRateDataProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartRateDataProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +65,15 @@
 		AC6156C91C7EB5CE0026D81B /* PolarDemo */ = {
 			isa = PBXGroup;
 			children = (
+				AC9A2CA31C7EFDCC00DAEE68 /* HeartRateDataProtocol.h */,
+				AC9A2CA01C7EFDB100DAEE68 /* HeartRateData.h */,
+				AC9A2CA11C7EFDB100DAEE68 /* HeartRateData.m */,
 				AC6156CD1C7EB5CE0026D81B /* AppDelegate.h */,
 				AC6156CE1C7EB5CE0026D81B /* AppDelegate.m */,
 				AC6156D01C7EB5CE0026D81B /* ViewController.h */,
 				AC6156D11C7EB5CE0026D81B /* ViewController.m */,
+				AC2CF8D01C7EFFD3009028EA /* PolarManager.h */,
+				AC2CF8D11C7EFFD3009028EA /* PolarManager.m */,
 				AC6156D31C7EB5CE0026D81B /* Main.storyboard */,
 				AC6156D61C7EB5CE0026D81B /* Assets.xcassets */,
 				AC6156D81C7EB5CE0026D81B /* LaunchScreen.storyboard */,
@@ -149,6 +161,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC9A2CA21C7EFDB100DAEE68 /* HeartRateData.m in Sources */,
+				AC2CF8D21C7EFFD3009028EA /* PolarManager.m in Sources */,
 				AC6156D21C7EB5CE0026D81B /* ViewController.m in Sources */,
 				AC6156CF1C7EB5CE0026D81B /* AppDelegate.m in Sources */,
 				AC6156CC1C7EB5CE0026D81B /* main.m in Sources */,
@@ -298,6 +312,7 @@
 				AC6156E01C7EB5CE0026D81B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
