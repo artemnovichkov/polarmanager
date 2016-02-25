@@ -11,12 +11,17 @@
 
 @interface ViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UILabel *heartRateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *infoLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *heartImageView;
 
 @property (nonatomic, copy) NSString *connected;
 @property (nonatomic, copy) NSString *bodyData;
 @property (nonatomic, copy) NSString *manufacturer;
 @property (nonatomic, copy) NSString *polarDeviceData;
+@property (assign) uint16_t heartRate;
+
+@property (nonatomic, retain) NSTimer    *pulseTimer;
 
 - (void)getHeartBPMData:(CBCharacteristic *)characteristic error:(NSError *)error;
 - (void)getManufacturerName:(CBCharacteristic *)characteristic;

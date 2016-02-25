@@ -26,7 +26,23 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.infoLabel.text = @"Connecting...";
     self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+}
+
+- (void) doHeartBeat {
+    CALayer *layer = self.heartImageView.layer;
+    CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    pulseAnimation.toValue = [NSNumber numberWithFloat:1.1];
+    pulseAnimation.fromValue = [NSNumber numberWithFloat:1.0];
+    
+    pulseAnimation.duration = 60. / self.heartRate / 2.;
+    pulseAnimation.repeatCount = 1;
+    pulseAnimation.autoreverses = YES;
+    pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [layer addAnimation:pulseAnimation forKey:@"scale"];
+    
+    self.pulseTimer = [NSTimer scheduledTimerWithTimeInterval:(60. / self.heartRate) target:self selector:@selector(doHeartBeat) userInfo:nil repeats:NO];
 }
 
 #pragma mark - CBCentralManagerDelegate
@@ -44,7 +60,6 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
         NSLog(@"Found the heart rate monitor: %@", localName);
         [self.centralManager stopScan];
         self.polarPeripheral = peripheral;
-        peripheral.delegate = self;
         [self.centralManager connectPeripheral:peripheral options:nil];
     }
 }
@@ -56,7 +71,6 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
             break;
         case CBCentralManagerStatePoweredOn: {
             NSLog(@"CoreBluetooth BLE hardware is powered on and ready");
-//            NSArray<CBUUID *> *services = @[[CBUUID UUIDWithString:kHeartRateServiceUUID], [CBUUID UUIDWithString:kDeviceInformationUUID]];
             [self.centralManager scanForPeripheralsWithServices:nil options:nil];
             break;
         }
@@ -114,6 +128,7 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:kBodyLocationCharacteristicUUID]]) {
         [self getBodyLocation:characteristic];
     }
+    self.infoLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@\n", self.connected, self.bodyData, self.manufacturer];
 }
 
 #pragma mark - CBCharacteristic Helpers
@@ -129,16 +144,25 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
         bpm = CFSwapInt16LittleToHost(*(uint16_t *)(&reportData[1]));
     }
     if (characteristic.value || !error) {
-        self.label.text = [NSString stringWithFormat:@"%hu bpm", bpm];
+        self.heartRate = bpm;
+        self.heartRateLabel.text = [NSString stringWithFormat:@"%hu bpm", bpm];
+        [self doHeartBeat];
     }
 }
 
 - (void)getManufacturerName:(CBCharacteristic *)characteristic {
-    
+    self.manufacturer = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
 }
 
 - (void)getBodyLocation:(CBCharacteristic *)characteristic {
-    
+    NSData *sensorData = characteristic.value;
+    uint8_t *bodyData = (uint8_t *)sensorData.bytes;
+    if (bodyData) {
+        uint8_t bodyLocation = bodyData[0];
+        self.bodyData = [NSString stringWithFormat:@"Body Location: %@", bodyLocation == 1 ? @"Chest" : @"Undefined"];
+    } else {
+        self.bodyData = @"Body Location: N/A";
+    }
 }
 
 @end
