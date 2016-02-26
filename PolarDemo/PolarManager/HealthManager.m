@@ -1,12 +1,12 @@
 //
-//  PolarManager.m
+//  HealthManager.m
 //  PolarDemo
 //
 //  Created by Artem on 25/02/16.
 //  Copyright © 2016 Rosberry. All rights reserved.
 //
 
-#import "PolarManager.h"
+#import "HealthManager.h"
 #import "HeartRateDataCollector.h"
 
 #import "CBUUID+Additions.h"
@@ -18,16 +18,15 @@ static NSString *const kMeasurementCharacteristicUUID = @"2A37";
 static NSString *const kBodyLocationCharacteristicUUID = @"2A38";
 static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
 
-@interface PolarManager () <CBCentralManagerDelegate, CBPeripheralDelegate>
+@interface HealthManager () <CBCentralManagerDelegate, CBPeripheralDelegate>
 
 @property (nonatomic) CBCentralManager *centralManager;
 @property (nonatomic) CBPeripheral *connectedPeripheral;
-
 @property (nonatomic) HeartRateDataCollector *heartRateDataCollector;
 
 @end
 
-@implementation PolarManager
+@implementation HealthManager
 
 - (instancetype)init {
     self = [super init];
@@ -36,8 +35,8 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
         self.heartRateDataCollector = [[HeartRateDataCollector alloc] init];
         __weak typeof(self) weakSelf = self;
         [self.heartRateDataCollector setFinishBlock:^(id<MetricProtocol> metric) {
-            if ([weakSelf.delegate respondsToSelector:@selector(polarManager:didReceiveMetric:)]) {
-                [weakSelf.delegate polarManager:weakSelf didReceiveMetric:metric];
+            if ([weakSelf.delegate respondsToSelector:@selector(healthManager:didReceiveMetric:)]) {
+                [weakSelf.delegate healthManager:weakSelf didReceiveMetric:metric];
             }
         }];
     }
@@ -56,6 +55,7 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
 
 - (void)stopCollectHealthData {
     self.heartRateDataCollector.needToCollectData = NO;
+    [self clearCollectedHealthData];
 }
 
 - (void)clearCollectedHealthData {
@@ -80,8 +80,8 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
 }
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
-    if ([self.delegate respondsToSelector:@selector(polarManager:didUpdateState:)]) {
-        [self.delegate polarManager:self didUpdateState:central.state];
+    if ([self.delegate respondsToSelector:@selector(healthManager:didUpdateState:)]) {
+        [self.delegate healthManager:self didUpdateState:central.state];
     }
     if (central.state == CBCentralManagerStatePoweredOn) {
         [central scanForPeripheralsWithServices:nil options:nil];
@@ -121,8 +121,8 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error {
     if ([characteristic.UUID isEqualToUUIDWithString:kMeasurementCharacteristicUUID]) {
         id<HeartRateDataProtocol> healthRateData = [self.heartRateDataCollector heartBPMDataForCharacteristic:characteristic error:error];
-        if ([self.delegate respondsToSelector:@selector(polarManager:didReceiveData:)]) {
-            [self.delegate polarManager:self didReceiveData:healthRateData];
+        if ([self.delegate respondsToSelector:@selector(healthManager:didReceiveData:)]) {
+            [self.delegate healthManager:self didReceiveData:healthRateData];
         }
     } else if ([characteristic.UUID isEqualToUUIDWithString:kManufacturerNameCharacteristicUUID]) {
         NSLog(@"%@", [self.heartRateDataCollector manufacturerNameForCharacteristic:characteristic]);

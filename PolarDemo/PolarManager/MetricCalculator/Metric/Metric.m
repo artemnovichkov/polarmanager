@@ -16,5 +16,6 @@
 @synthesize avgIntensity;
 @synthesize targetHR;
 @synthesize procentIntensity;
+@synthesize burnedCalories;
 
 @end

@@ -16,5 +16,6 @@
 @property (nonatomic) CGFloat avgIntensity;
 @property (nonatomic) CGFloat targetHR;
 @property (nonatomic) CGFloat procentIntensity;
+@property (nonatomic) CGFloat burnedCalories;
 
 @end

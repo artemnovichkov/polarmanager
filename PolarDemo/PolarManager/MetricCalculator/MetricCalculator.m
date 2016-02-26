@@ -9,6 +9,8 @@
 #import "MetricCalculator.h"
 #import "Metric.h"
 
+static NSInteger kMaxHRCoefficient = 220;
+
 @implementation MetricCalculator
 
 #pragma mark - MetricCalculatorProtocol
@@ -18,7 +20,7 @@
                                                    fitnessLevel:(FitnessLevel)fitnessLevel
                                                        duration:(CGFloat)duration {
     Metric *metric = [[Metric alloc] init];
-    metric.maxHR = 220 - age;
+    metric.maxHR = kMaxHRCoefficient - age;
     metric.avgHR = [[heartRateData valueForKeyPath:@"@avg.self"] floatValue];
     metric.maxWorkoutHR = [[heartRateData valueForKeyPath:@"@max.self"] floatValue];
     metric.avgIntensity = metric.avgHR / metric.maxHR;

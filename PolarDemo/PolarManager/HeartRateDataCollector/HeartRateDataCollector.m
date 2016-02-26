@@ -11,6 +11,7 @@
 #import "HeartRateData.h"
 #import "MetricCalculator.h"
 #import "CaloriesCalculator.h"
+#import "MetricProtocol.h"
 
 @interface HeartRateDataCollector ()
 
@@ -29,17 +30,16 @@
     return self;
 }
 
-- (void)calculateMetrics {
-    CGFloat duration = ([NSDate date].timeIntervalSince1970 - self.collectingStartDate.timeIntervalSince1970);
+- (void)calculateMetricsForStartDate:(NSDate *)startDate {
+    CGFloat duration = ([NSDate date].timeIntervalSince1970 - startDate.timeIntervalSince1970);
     duration /= 60.f * 60.f;
     MetricCalculator *metricCalculator = [[MetricCalculator alloc] init];
-    CaloriesCalculator *calc = [[CaloriesCalculator alloc] init];
-    id<MetricProtocol> metric = [metricCalculator calculateMetricForHeartRateData:self.storedBpms age:calc.age fitnessLevel:FitnessLevelBeginner duration:duration];
+    CaloriesCalculator *caloriesCalculator = [[CaloriesCalculator alloc] init];
+    id<MetricProtocol> metric = [metricCalculator calculateMetricForHeartRateData:self.storedBpms age:caloriesCalculator.age fitnessLevel:FitnessLevelBeginner duration:duration];
+    metric.burnedCalories = [caloriesCalculator burntCaloriesForAvgHR:metric.avgHR exerciseDuration:duration];
     if (self.finishBlock) {
         self.finishBlock(metric);
     }
-    CGFloat calories = [calc burntCaloriesForAvgHR:metric.avgHR exerciseDuration:duration];
-    NSLog(@"Burnt %f", calories);
 }
 
 - (void)clearCollectedData {
@@ -116,7 +116,7 @@
     if (needToCollectData) {
         self.collectingStartDate = [NSDate date];
     } else {
-        [self calculateMetrics];
+        [self calculateMetricsForStartDate:self.collectingStartDate];
     }
 }
 

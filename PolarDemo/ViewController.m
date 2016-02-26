@@ -7,13 +7,13 @@
 //
 
 #import "ViewController.h"
-#import "PolarManager.h"
+#import "HealthManager.h"
 
 #import "NSString+Additions.h"
 
-@interface ViewController () <PolarManagerDelegate>
+@interface ViewController () <HealthManagerDelegate>
 
-@property (nonatomic) PolarManager *polarManager;
+@property (nonatomic) HealthManager *healthManager;
 @property (nonatomic) NSTimer *workoutTimer;
 @property (nonatomic) CGFloat workoutTime;
 
@@ -23,8 +23,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.polarManager = [[PolarManager alloc] init];
-    self.polarManager.delegate = self;
+    self.healthManager = [[HealthManager alloc] init];
+    self.healthManager.delegate = self;
 }
 
 - (void)updateTime {
@@ -50,7 +50,7 @@
 #pragma mark - Actions
 
 - (IBAction)startWorkoutButtonAction:(UIButton *)sender {
-    [self.polarManager startCollectHealthData];
+    [self.healthManager startCollectHealthData];
     self.workoutTimer = [NSTimer timerWithTimeInterval:0.05 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:self.workoutTimer forMode:NSRunLoopCommonModes];
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
@@ -61,12 +61,12 @@
     [self.workoutTimer invalidate];
     self.workoutTimer = nil;
     [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
-    [self.polarManager stopCollectHealthData];
+    [self.healthManager stopCollectHealthData];
 }
 
 #pragma mark - PolarManagerDelegate
 
-- (void)polarManager:(PolarManager *)polarManager didUpdateState:(CBCentralManagerState)state {
+- (void)healthManager:(HealthManager *)healthManager didUpdateState:(CBCentralManagerState)state {
     NSString *statusString;
     switch (state) {
         case CBCentralManagerStatePoweredOff:
@@ -90,13 +90,13 @@
     self.bluetoothStatusLabel.text = statusString;
 }
 
-- (void)polarManager:(PolarManager *)polarManager didReceiveData:(id<HeartRateDataProtocol>)heartRateData {
+- (void)healthManager:(HealthManager *)healthManager didReceiveData:(id<HeartRateDataProtocol>)heartRateData{
     self.heartRate = heartRateData.bpm;
     self.heartRateLabel.text = [NSString stringWithFormat:@"%.0f bpm", heartRateData.bpm];
     [self doHeartBeat];
 }
 
-- (void)polarManager:(PolarManager *)polarManager didReceiveMetric:(id<MetricProtocol>)metric {
+- (void)healthManager:(HealthManager *)healthManager didReceiveMetric:(id<MetricProtocol>)metric {
     NSString *infoString = [NSString stringWithFormat:@"User's max HR: %.0f bpm\n"
                             @"User's avg HR DURING workout: %.0f bpm\n"
                             @"User's max HR DURING workout: %.0f bpm\n"
