@@ -15,13 +15,14 @@
 
 @property (nonatomic, weak) id<PolarManagerDelegate> delegate;
 
-- (void)start;
 - (void)stop;
 
 @end
 
 @protocol PolarManagerDelegate <NSObject>
 
-- (void)polarManager:(PolarManager *)polarManager didReceivedData:(HeartRateData *)heartRateData;
+@optional
+- (void)polarManager:(PolarManager *)polarManager didUpdateState:(CBCentralManagerState)state;
+- (void)polarManager:(PolarManager *)polarManager didReceiveData:(HeartRateData *)heartRateData;
 
 @end

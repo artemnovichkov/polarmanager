@@ -30,9 +30,13 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
 
 @implementation PolarManager
 
-- (void)start {
-    self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
-    self.storedBpms = [NSMutableArray array];
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+        self.storedBpms = [NSMutableArray array];
+    }
+    return self;
 }
 
 - (void)stop {
@@ -57,25 +61,11 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
 }
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
-    switch (central.state) {
-        case CBCentralManagerStatePoweredOff:
-            NSLog(@"CoreBluetooth BLE hardware is powered off");
-            break;
-        case CBCentralManagerStatePoweredOn:
-            NSLog(@"CoreBluetooth BLE hardware is powered on and ready");
-            [self.centralManager scanForPeripheralsWithServices:nil options:nil];
-            break;
-        case CBCentralManagerStateUnauthorized:
-            NSLog(@"CoreBluetooth BLE state is unauthorized");
-            break;
-        case CBCentralManagerStateUnknown:
-            NSLog(@"CoreBluetooth BLE state is unknown");
-            break;
-        case CBCentralManagerStateUnsupported:
-            NSLog(@"CoreBluetooth BLE hardware is unsupported on this platform");
-            break;
-        default:
-            break;
+    if ([self.delegate respondsToSelector:@selector(polarManager:didUpdateState:)]) {
+        [self.delegate polarManager:self didUpdateState:central.state];
+    }
+    if (central.state == CBCentralManagerStatePoweredOn) {
+        [central scanForPeripheralsWithServices:nil options:nil];
     }
 }
 
@@ -133,7 +123,7 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
         offset = offset + 1;
     } else {
         bpm = CFSwapInt16LittleToHost(*(uint16_t *)(&reportData[1]));
-        offset =  offset + 2; // Plus 2 bytes //
+        offset =  offset + 2;
     }
     NSLog(@"bpm: %i", bpm);
     [self.storedBpms addObject:@(bpm)];
@@ -162,7 +152,9 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
         HeartRateData *heartRateData = [[HeartRateData alloc] init];
         heartRateData.bpm = bpm;
         heartRateData.rrValues = rrValues;
-        [self.delegate polarManager:self didReceivedData:heartRateData];
+        if ([self.delegate respondsToSelector:@selector(polarManager:didReceiveData:)]) {
+            [self.delegate polarManager:self didReceiveData:heartRateData];
+        }
     }
 }
 
