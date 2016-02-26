@@ -61,10 +61,10 @@
 			children = (
 				AC2CF8E41C80110C009028EA /* PolarManager.h */,
 				AC2CF8E51C80110C009028EA /* PolarManager.m */,
-				AC2CF8DA1C80110C009028EA /* CaloriesCalculator */,
-				AC2CF8DD1C80110C009028EA /* Categories */,
 				AC2CF8E01C80110C009028EA /* HeartRateData */,
 				AC2CF8EA1C8011BF009028EA /* HeartRateDataCollector */,
+				AC2CF8DA1C80110C009028EA /* CaloriesCalculator */,
+				AC2CF8DD1C80110C009028EA /* Categories */,
 			);
 			path = PolarManager;
 			sourceTree = "<group>";

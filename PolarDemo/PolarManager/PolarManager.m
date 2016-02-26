@@ -43,7 +43,6 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
 }
 
 - (void)stop {
-    [self.centralManager cancelPeripheralConnection:self.connectedPeripheral];
     self.heartRateDataCollector.needToCollectData = NO;
 }
 
