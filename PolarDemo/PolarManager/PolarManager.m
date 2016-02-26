@@ -8,6 +8,7 @@
 
 #import "PolarManager.h"
 #import "CBUUID+Additions.h"
+#import "HeartRateData.h"
 
 static NSString *const kDeviceInformationUUID = @"180A";
 static NSString *const kHeartRateServiceUUID = @"180D";

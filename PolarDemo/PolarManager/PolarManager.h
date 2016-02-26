@@ -8,7 +8,7 @@
 
 @import Foundation;
 @import CoreBluetooth;
-#import "HeartRateData.h"
+#import "HeartRateDataProtocol.h"
 
 @protocol PolarManagerDelegate;
 @interface PolarManager : NSObject
@@ -23,6 +23,6 @@
 
 @optional
 - (void)polarManager:(PolarManager *)polarManager didUpdateState:(CBCentralManagerState)state;
-- (void)polarManager:(PolarManager *)polarManager didReceiveData:(HeartRateData *)heartRateData;
+- (void)polarManager:(PolarManager *)polarManager didReceiveData:(id<HeartRateDataProtocol>)heartRateData;
 
 @end

@@ -74,7 +74,7 @@
     self.bluetoothStatusLabel.text = statusString;
 }
 
-- (void)polarManager:(PolarManager *)polarManager didReceivedData:(HeartRateData *)heartRateData {
+- (void)polarManager:(PolarManager *)polarManager didReceivedData:(id<HeartRateDataProtocol>)heartRateData {
     self.heartRate = heartRateData.bpm;
     self.heartRateLabel.text = [NSString stringWithFormat:@"%.0f bpm", heartRateData.bpm];
     [self doHeartBeat];
