@@ -12,7 +12,7 @@
 
 @interface HeartRateDataCollector : NSObject <HeartRateDataCollectorProtocol>
 
-@property (nonatomic, copy) void (^finishBlock)(id<MetricProtocol>);
+@property (nonatomic, copy) void (^calculatingDidFinishBlock)(id<MetricProtocol>);
 @property (nonatomic) BOOL needToCollectData;
 
 - (void)clearCollectedData;

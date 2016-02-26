@@ -10,15 +10,12 @@
 @import CoreBluetooth;
 #import "HeartRateDataProtocol.h"
 #import "MetricProtocol.h"
+#import "HealthManagerProtocol.h"
 
 @protocol HealthManagerDelegate;
-@interface HealthManager : NSObject
+@interface HealthManager : NSObject <HealthManagerProtocol>
 
 @property (nonatomic, weak) id<HealthManagerDelegate> delegate;
-
-- (void)startCollectHealthData;
-- (void)stopCollectHealthData;
-- (void)clearCollectedHealthData;
 
 @end
 

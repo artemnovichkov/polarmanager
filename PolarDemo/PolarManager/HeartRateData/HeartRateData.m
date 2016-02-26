@@ -11,6 +11,6 @@
 @implementation HeartRateData
 
 @synthesize bpm;
-@synthesize rrValues;
+@synthesize rrIntervals;
 
 @end

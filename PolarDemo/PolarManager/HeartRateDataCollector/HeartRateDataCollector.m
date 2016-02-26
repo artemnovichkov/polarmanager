@@ -15,7 +15,7 @@
 
 @interface HeartRateDataCollector ()
 
-@property (nonatomic) NSMutableArray<NSNumber *> *storedBpms;
+@property (nonatomic) NSMutableArray<NSNumber *> *storedHeartRate;
 @property (nonatomic) NSDate *collectingStartDate;
 
 @end
@@ -25,7 +25,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.storedBpms = [NSMutableArray array];
+        self.storedHeartRate = [NSMutableArray array];
     }
     return self;
 }
@@ -35,15 +35,16 @@
     duration /= 60.f * 60.f;
     MetricCalculator *metricCalculator = [[MetricCalculator alloc] init];
     CaloriesCalculator *caloriesCalculator = [[CaloriesCalculator alloc] init];
-    id<MetricProtocol> metric = [metricCalculator calculateMetricForHeartRateData:self.storedBpms age:caloriesCalculator.age fitnessLevel:FitnessLevelBeginner duration:duration];
+#warning Some hardcode
+    id<MetricProtocol> metric = [metricCalculator calculateMetricForHeartRateData:self.storedHeartRate age:caloriesCalculator.age fitnessLevel:FitnessLevelBeginner duration:duration];
     metric.burnedCalories = [caloriesCalculator burntCaloriesForAvgHR:metric.avgHR exerciseDuration:duration];
-    if (self.finishBlock) {
-        self.finishBlock(metric);
+    if (self.calculatingDidFinishBlock) {
+        self.calculatingDidFinishBlock(metric);
     }
 }
 
 - (void)clearCollectedData {
-    self.storedBpms = [NSMutableArray array];
+    [self.storedHeartRate removeAllObjects];
 }
 
 #pragma mark - HeartRateDataCollectorProtocol
@@ -64,14 +65,14 @@
     }
     NSLog(@"bpm: %i", bpm);
     if (self.needToCollectData) {
-        [self.storedBpms addObject:@(bpm)];
+        [self.storedHeartRate addObject:@(bpm)];
     }
     
     if ((reportData[0] & 0x03) == 1) {
         offset =  offset + 2;
     }
     
-    NSMutableArray<NSNumber *> *rrValues = [NSMutableArray array];
+    NSMutableArray<NSNumber *> *rrIntervals = [NSMutableArray array];
     if ((reportData[0] & 0x04) == 0) {
         NSLog(@"%@", @"Data are not present");
     } else {
@@ -79,34 +80,34 @@
         for (int i = 0; i < count; i++) {
             uint16_t rrValue = CFSwapInt16LittleToHost(*(uint16_t *)(&reportData[offset]));
             rrValue = (rrValue / 1024.0 ) * 1000.0;
-            [rrValues addObject:@(rrValue)];
+            [rrIntervals addObject:@(rrValue)];
             offset = offset + 2;
         }
     }
     if (sensorData || !error) {
         HeartRateData *heartRateData = [[HeartRateData alloc] init];
         heartRateData.bpm = bpm;
-        heartRateData.rrValues = rrValues;
+        heartRateData.rrIntervals = rrIntervals;
         return heartRateData;
+    } else {
+        //Error
+        return nil;
     }
-    return nil;
 }
 
 - (nullable NSString *)manufacturerNameForCharacteristic:(nonnull CBCharacteristic *)characteristic {
     return [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
 }
 
-- (nonnull NSString *)bodyLocationForCharacteristic:(nonnull CBCharacteristic *)characteristic {
+- (BodyLocation)bodyLocationForCharacteristic:(nonnull CBCharacteristic *)characteristic {
     NSData *sensorData = characteristic.value;
     const uint8_t *bodyData = sensorData.bytes;
-    NSString *bodyDataString;
     if (bodyData) {
         uint8_t bodyLocation = bodyData[0];
-        bodyDataString = [NSString stringWithFormat:@"Body Location: %@", bodyLocation == 1 ? @"Chest" : @"Undefined"];
+        return bodyLocation == 1 ? BodyLocationChest : BodyLocationUndefined;
     } else {
-        bodyDataString = @"Body Location: N/A";
+        return BodyLocationNA;
     }
-    return bodyDataString;
 }
 
 #pragma mark - Setters

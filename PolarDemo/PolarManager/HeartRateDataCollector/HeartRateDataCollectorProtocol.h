@@ -10,10 +10,16 @@
 @class CBCharacteristic;
 @protocol HeartRateDataProtocol;
 
+typedef NS_ENUM(NSUInteger, BodyLocation) {
+    BodyLocationChest,
+    BodyLocationUndefined,
+    BodyLocationNA,
+};
+
 @protocol HeartRateDataCollectorProtocol <NSObject>
 
 - (nullable id<HeartRateDataProtocol>)heartBPMDataForCharacteristic:(nonnull CBCharacteristic *)characteristic error:(nullable NSError *)error;
 - (nullable NSString *)manufacturerNameForCharacteristic:(nonnull CBCharacteristic *)characteristic;
-- (nonnull NSString *)bodyLocationForCharacteristic:(nonnull CBCharacteristic *)characteristic;
+- (BodyLocation)bodyLocationForCharacteristic:(nonnull CBCharacteristic *)characteristic;
 
 @end

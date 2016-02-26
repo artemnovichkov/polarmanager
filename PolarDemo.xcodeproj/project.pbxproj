@@ -27,8 +27,9 @@
 		AC1772621C802BD100D5F37E /* Metric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Metric.h; path = MetricCalculator/Metric/Metric.h; sourceTree = "<group>"; };
 		AC1772631C802BD100D5F37E /* Metric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Metric.m; path = MetricCalculator/Metric/Metric.m; sourceTree = "<group>"; };
 		AC1772651C802FB500D5F37E /* MetricCalculatorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetricCalculatorProtocol.h; path = MetricCalculator/MetricCalculatorProtocol.h; sourceTree = "<group>"; };
-		AC1772661C803F9B00D5F37E /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
-		AC1772671C803F9B00D5F37E /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
+		AC1772661C803F9B00D5F37E /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Additions.h"; path = "PolarManager/Categories/NSString+Additions.h"; sourceTree = "<group>"; };
+		AC1772671C803F9B00D5F37E /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Additions.m"; path = "PolarManager/Categories/NSString+Additions.m"; sourceTree = "<group>"; };
+		AC1772691C8047B400D5F37E /* HealthManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthManagerProtocol.h; sourceTree = "<group>"; };
 		AC2CF8DB1C80110C009028EA /* CaloriesCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaloriesCalculator.h; sourceTree = "<group>"; };
 		AC2CF8DC1C80110C009028EA /* CaloriesCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaloriesCalculator.m; sourceTree = "<group>"; };
 		AC2CF8DE1C80110C009028EA /* CBUUID+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBUUID+Additions.h"; sourceTree = "<group>"; };
@@ -71,6 +72,7 @@
 		AC2CF8D91C80110C009028EA /* HealthManager */ = {
 			isa = PBXGroup;
 			children = (
+				AC1772691C8047B400D5F37E /* HealthManagerProtocol.h */,
 				AC2CF8E41C80110C009028EA /* HealthManager.h */,
 				AC2CF8E51C80110C009028EA /* HealthManager.m */,
 				AC2CF8EA1C8011BF009028EA /* HeartRateDataCollector */,
@@ -95,8 +97,6 @@
 		AC2CF8DD1C80110C009028EA /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				AC1772661C803F9B00D5F37E /* NSString+Additions.h */,
-				AC1772671C803F9B00D5F37E /* NSString+Additions.m */,
 				AC2CF8DE1C80110C009028EA /* CBUUID+Additions.h */,
 				AC2CF8DF1C80110C009028EA /* CBUUID+Additions.m */,
 			);
@@ -146,6 +146,8 @@
 				AC2CF8D91C80110C009028EA /* HealthManager */,
 				AC6156CD1C7EB5CE0026D81B /* AppDelegate.h */,
 				AC6156CE1C7EB5CE0026D81B /* AppDelegate.m */,
+				AC1772661C803F9B00D5F37E /* NSString+Additions.h */,
+				AC1772671C803F9B00D5F37E /* NSString+Additions.m */,
 				AC6156D01C7EB5CE0026D81B /* ViewController.h */,
 				AC6156D11C7EB5CE0026D81B /* ViewController.m */,
 				AC6156D31C7EB5CE0026D81B /* Main.storyboard */,

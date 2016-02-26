@@ -34,7 +34,7 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
         self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
         self.heartRateDataCollector = [[HeartRateDataCollector alloc] init];
         __weak typeof(self) weakSelf = self;
-        [self.heartRateDataCollector setFinishBlock:^(id<MetricProtocol> metric) {
+        [self.heartRateDataCollector setCalculatingDidFinishBlock:^(id<MetricProtocol> metric) {
             if ([weakSelf.delegate respondsToSelector:@selector(healthManager:didReceiveMetric:)]) {
                 [weakSelf.delegate healthManager:weakSelf didReceiveMetric:metric];
             }
@@ -127,7 +127,7 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
     } else if ([characteristic.UUID isEqualToUUIDWithString:kManufacturerNameCharacteristicUUID]) {
         NSLog(@"%@", [self.heartRateDataCollector manufacturerNameForCharacteristic:characteristic]);
     } else if ([characteristic.UUID isEqualToUUIDWithString:kBodyLocationCharacteristicUUID]) {
-        NSLog(@"%@", [self.heartRateDataCollector bodyLocationForCharacteristic:characteristic]);
+        NSLog(@"Body Location: %lu", (unsigned long)[self.heartRateDataCollector bodyLocationForCharacteristic:characteristic]);
     }
 }
 

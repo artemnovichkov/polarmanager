@@ -10,6 +10,6 @@
 
 @interface CBUUID (Additions)
 
-- (BOOL)isEqualToUUIDWithString:(NSString *)UUID;
+- (BOOL)isEqualToUUIDWithString:(NSString *)UUIDString;
 
 @end

@@ -10,8 +10,8 @@
 
 @implementation CBUUID (Additions)
 
-- (BOOL)isEqualToUUIDWithString:(NSString *)UUID {
-    return [self isEqual:[CBUUID UUIDWithString:UUID]];
+- (BOOL)isEqualToUUIDWithString:(NSString *)UUIDString {
+    return [self isEqual:[CBUUID UUIDWithString:UUIDString]];
 }
 
 @end

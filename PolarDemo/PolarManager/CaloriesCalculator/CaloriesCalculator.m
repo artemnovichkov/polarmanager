@@ -29,12 +29,15 @@ static CGFloat const kFemaleFourthKoef = 20.4022;
 - (instancetype)init {
     self = [super init];
     if (self) {
+#warning Some hardcode
         self.weight = 78.f;
         self.age = 22;
         self.genderType = GenderTypeMale;
     }
     return self;
 }
+
+#pragma mark - CaloriesCalculatorProtocol
 
 - (CGFloat)burntCaloriesForAvgHR:(CGFloat)avgHR exerciseDuration:(CGFloat)duration {
     CGFloat koef1 = self.genderType == GenderTypeMale ? kMaleFirstKoef  : kFemaleFirstKoef;

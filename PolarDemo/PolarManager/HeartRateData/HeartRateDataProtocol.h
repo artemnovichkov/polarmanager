@@ -11,6 +11,6 @@
 @protocol HeartRateDataProtocol <NSObject>
 
 @property (nonatomic) CGFloat bpm;
-@property (nonatomic) NSArray<NSNumber *> *rrValues;
+@property (nonatomic) NSArray<NSNumber *> *rrIntervals;
 
 @end

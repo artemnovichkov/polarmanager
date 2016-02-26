@@ -10,14 +10,5 @@
 
 @interface ViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *bluetoothStatusLabel;
-@property (weak, nonatomic) IBOutlet UILabel *heartRateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *infoLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *heartImageView;
-
-@property (assign) CGFloat heartRate;
-
-@property (nonatomic, retain) NSTimer *pulseTimer;
-
 @end
 
