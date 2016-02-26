@@ -21,6 +21,7 @@
 		ACB7F3651C80635D00A73FC4 /* ANMetric.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB7F3591C80635D00A73FC4 /* ANMetric.m */; };
 		ACB7F3661C80635D00A73FC4 /* ANMetricCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB7F35C1C80635D00A73FC4 /* ANMetricCalculator.m */; };
 		ACB7F3671C80635D00A73FC4 /* CBUUID+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB7F3601C80635D00A73FC4 /* CBUUID+Additions.m */; };
+		ACB7F36A1C8063FD00A73FC4 /* NAErrorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB7F3691C8063FD00A73FC4 /* NAErrorFactory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,9 @@
 		ACB7F35D1C80635D00A73FC4 /* ANMetricCalculatorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANMetricCalculatorProtocol.h; sourceTree = "<group>"; };
 		ACB7F35F1C80635D00A73FC4 /* CBUUID+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBUUID+Additions.h"; sourceTree = "<group>"; };
 		ACB7F3601C80635D00A73FC4 /* CBUUID+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBUUID+Additions.m"; sourceTree = "<group>"; };
+		ACB7F3681C8063FD00A73FC4 /* NAErrorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NAErrorFactory.h; path = ANHealthManager/NAErrorFactory/NAErrorFactory.h; sourceTree = "<group>"; };
+		ACB7F3691C8063FD00A73FC4 /* NAErrorFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NAErrorFactory.m; path = ANHealthManager/NAErrorFactory/NAErrorFactory.m; sourceTree = "<group>"; };
+		ACB7F36C1C80642C00A73FC4 /* NAErrorFactoryProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NAErrorFactoryProtocol.h; path = ANHealthManager/NAErrorFactory/NAErrorFactoryProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,7 @@
 				ACB7F3471C80635D00A73FC4 /* ANCaloriesCalculator */,
 				ACB7F3561C80635D00A73FC4 /* ANMetricCalculator */,
 				ACB7F35E1C80635D00A73FC4 /* Categories */,
+				ACB7F36B1C80641800A73FC4 /* NAErrorFactory */,
 			);
 			path = ANHealthManager;
 			sourceTree = "<group>";
@@ -185,6 +190,17 @@
 				ACB7F3601C80635D00A73FC4 /* CBUUID+Additions.m */,
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		ACB7F36B1C80641800A73FC4 /* NAErrorFactory */ = {
+			isa = PBXGroup;
+			children = (
+				ACB7F36C1C80642C00A73FC4 /* NAErrorFactoryProtocol.h */,
+				ACB7F3681C8063FD00A73FC4 /* NAErrorFactory.h */,
+				ACB7F3691C8063FD00A73FC4 /* NAErrorFactory.m */,
+			);
+			name = NAErrorFactory;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +277,7 @@
 				AC6156D21C7EB5CE0026D81B /* ViewController.m in Sources */,
 				ACB7F3621C80635D00A73FC4 /* ANHealthManager.m in Sources */,
 				ACB7F3651C80635D00A73FC4 /* ANMetric.m in Sources */,
+				ACB7F36A1C8063FD00A73FC4 /* NAErrorFactory.m in Sources */,
 				AC1772951C80579D00D5F37E /* NSString+Additions.m in Sources */,
 				ACB7F3671C80635D00A73FC4 /* CBUUID+Additions.m in Sources */,
 				ACB7F3631C80635D00A73FC4 /* ANHeartRateData.m in Sources */,
