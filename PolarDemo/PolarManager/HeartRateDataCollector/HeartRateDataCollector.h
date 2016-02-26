@@ -8,13 +8,11 @@
 
 @import UIKit;
 #import "HeartRateDataCollectorProtocol.h"
+#import "MetricProtocol.h"
 
 @interface HeartRateDataCollector : NSObject <HeartRateDataCollectorProtocol>
 
+@property (nonatomic, copy) void (^finishBlock)(id<MetricProtocol>);
 @property (nonatomic) BOOL needToCollectData;
-
-@property (nonatomic) CGFloat averageBpm;
-@property (nonatomic) CGFloat maxBpm;
-@property (nonatomic) CGFloat avgIntensity;
 
 @end

@@ -78,4 +78,8 @@
     [self doHeartBeat];
 }
 
+- (void)polarManager:(PolarManager *)polarManager didReceiveMetric:(id<MetricProtocol>)metric {
+    
+}
+
 @end
