@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		AC1772621C802BD100D5F37E /* Metric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Metric.h; path = MetricCalculator/Metric/Metric.h; sourceTree = "<group>"; };
 		AC1772631C802BD100D5F37E /* Metric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Metric.m; path = MetricCalculator/Metric/Metric.m; sourceTree = "<group>"; };
+		AC1772651C802FB500D5F37E /* MetricCalculatorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetricCalculatorProtocol.h; path = MetricCalculator/MetricCalculatorProtocol.h; sourceTree = "<group>"; };
 		AC2CF8DB1C80110C009028EA /* CaloriesCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaloriesCalculator.h; sourceTree = "<group>"; };
 		AC2CF8DC1C80110C009028EA /* CaloriesCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaloriesCalculator.m; sourceTree = "<group>"; };
 		AC2CF8DE1C80110C009028EA /* CBUUID+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBUUID+Additions.h"; sourceTree = "<group>"; };
@@ -161,9 +162,10 @@
 		ACAA6F341C80286200AC5690 /* MetricCalculator */ = {
 			isa = PBXGroup;
 			children = (
-				ACAA6F391C802B4200AC5690 /* Metric */,
+				AC1772651C802FB500D5F37E /* MetricCalculatorProtocol.h */,
 				ACAA6F351C80287600AC5690 /* MetricCalculator.h */,
 				ACAA6F361C80287600AC5690 /* MetricCalculator.m */,
+				ACAA6F391C802B4200AC5690 /* Metric */,
 			);
 			name = MetricCalculator;
 			sourceTree = "<group>";

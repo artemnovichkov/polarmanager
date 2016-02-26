@@ -17,8 +17,4 @@
 @property (nonatomic) CGFloat targetHR;
 @property (nonatomic) CGFloat procentIntensity;
 
-- (void)calculateMetricWithHeartRateData:(NSArray<NSNumber *> *)heartRateData
-                                     age:(NSInteger)age
-                                duration:(CGFloat)duration;
-
 @end

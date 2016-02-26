@@ -6,8 +6,8 @@
 //  Copyright © 2016 Rosberry. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "MetricCalculatorProtocol.h"
 
-@interface MetricCalculator : NSObject
+@interface MetricCalculator : NSObject <MetricCalculatorProtocol>
 
 @end
