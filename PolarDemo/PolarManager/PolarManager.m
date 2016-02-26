@@ -23,10 +23,7 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
 @property (nonatomic) CBCentralManager *centralManager;
 @property (nonatomic) CBPeripheral *connectedPeripheral;
 
-@property (nonatomic) NSMutableArray<NSNumber *> *storedBpms;
-@property (nonatomic) CGFloat averageBpm;
-@property (nonatomic) CGFloat maxBpm;
-@property (nonatomic) CGFloat avgIntensity;
+@property (nonatomic) HeartRateDataCollector *heartRateDataCollector;
 
 @end
 
@@ -36,13 +33,18 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
     self = [super init];
     if (self) {
         self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
-        self.storedBpms = [NSMutableArray array];
+        self.heartRateDataCollector = [[HeartRateDataCollector alloc] init];
     }
     return self;
 }
 
+- (void)startCollectHealthData {
+    self.heartRateDataCollector.needToCollectData = YES;
+}
+
 - (void)stop {
     [self.centralManager cancelPeripheralConnection:self.connectedPeripheral];
+    self.heartRateDataCollector.needToCollectData = NO;
 }
 
 #pragma mark - CBCentralManagerDelegate
@@ -103,14 +105,14 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error {
     if ([characteristic.UUID isEqualToUUIDWithString:kMeasurementCharacteristicUUID]) {
-        id<HeartRateDataProtocol> healthRateData = [HeartRateDataCollector heartBPMDataForCharacteristic:characteristic error:error];
+        id<HeartRateDataProtocol> healthRateData = [self.heartRateDataCollector heartBPMDataForCharacteristic:characteristic error:error];
         if ([self.delegate respondsToSelector:@selector(polarManager:didReceiveData:)]) {
             [self.delegate polarManager:self didReceiveData:healthRateData];
         }
     } else if ([characteristic.UUID isEqualToUUIDWithString:kManufacturerNameCharacteristicUUID]) {
-        NSLog(@"%@", [HeartRateDataCollector manufacturerNameForCharacteristic:characteristic]);
+        NSLog(@"%@", [self.heartRateDataCollector manufacturerNameForCharacteristic:characteristic]);
     } else if ([characteristic.UUID isEqualToUUIDWithString:kBodyLocationCharacteristicUUID]) {
-        NSLog(@"%@", [HeartRateDataCollector bodyLocationForCharacteristic:characteristic]);
+        NSLog(@"%@", [self.heartRateDataCollector bodyLocationForCharacteristic:characteristic]);
     }
 }
 

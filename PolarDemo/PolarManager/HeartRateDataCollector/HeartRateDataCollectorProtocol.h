@@ -12,8 +12,8 @@
 
 @protocol HeartRateDataCollectorProtocol <NSObject>
 
-+ (nullable id<HeartRateDataProtocol>)heartBPMDataForCharacteristic:(nonnull CBCharacteristic *)characteristic error:(nullable NSError *)error;
-+ (nullable NSString *)manufacturerNameForCharacteristic:(nonnull CBCharacteristic *)characteristic;
-+ (nonnull NSString *)bodyLocationForCharacteristic:(nonnull CBCharacteristic *)characteristic;
+- (nullable id<HeartRateDataProtocol>)heartBPMDataForCharacteristic:(nonnull CBCharacteristic *)characteristic error:(nullable NSError *)error;
+- (nullable NSString *)manufacturerNameForCharacteristic:(nonnull CBCharacteristic *)characteristic;
+- (nonnull NSString *)bodyLocationForCharacteristic:(nonnull CBCharacteristic *)characteristic;
 
 @end

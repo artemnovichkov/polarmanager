@@ -10,11 +10,25 @@
 #import "HeartRateDataCollector.h"
 #import "HeartRateData.h"
 
+@interface HeartRateDataCollector ()
+
+@property (nonatomic) NSMutableArray<NSNumber *> *storedBpms;
+
+@end
+
 @implementation HeartRateDataCollector
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.storedBpms = [NSMutableArray array];
+    }
+    return self;
+}
 
 #pragma mark - HeartRateDataCollectorProtocol
 
-+ (nullable id<HeartRateDataProtocol>)heartBPMDataForCharacteristic:(nonnull CBCharacteristic *)characteristic error:(nullable NSError *)error {
+- (nullable id<HeartRateDataProtocol>)heartBPMDataForCharacteristic:(nonnull CBCharacteristic *)characteristic error:(nullable NSError *)error {
     NSData *sensorData = characteristic.value;
     const uint8_t *reportData = sensorData.bytes;
     
@@ -29,11 +43,13 @@
         offset =  offset + 2;
     }
     NSLog(@"bpm: %i", bpm);
-//    [self.storedBpms addObject:@(bpm)];
-//    self.averageBpm = [[self.storedBpms valueForKeyPath:@"@avg.self"] floatValue];
-//    self.maxBpm = [[self.storedBpms valueForKeyPath:@"@max.self"] floatValue];
-//    self.avgIntensity = self.averageBpm / self.maxBpm;
-//    NSLog(@"avgIntensity %.1f", self.avgIntensity * 100);
+    if (self.needToCollectData) {
+        [self.storedBpms addObject:@(bpm)];
+        self.averageBpm = [[self.storedBpms valueForKeyPath:@"@avg.self"] floatValue];
+        self.maxBpm = [[self.storedBpms valueForKeyPath:@"@max.self"] floatValue];
+        self.avgIntensity = self.averageBpm / self.maxBpm;
+        NSLog(@"avgIntensity %.1f", self.avgIntensity * 100);
+    }
     
     if ((reportData[0] & 0x03) == 1) {
         offset =  offset + 2;
@@ -60,11 +76,11 @@
     return nil;
 }
 
-+ (nullable NSString *)manufacturerNameForCharacteristic:(nonnull CBCharacteristic *)characteristic {
+- (nullable NSString *)manufacturerNameForCharacteristic:(nonnull CBCharacteristic *)characteristic {
     return [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
 }
 
-+ (nonnull NSString *)bodyLocationForCharacteristic:(nonnull CBCharacteristic *)characteristic {
+- (nonnull NSString *)bodyLocationForCharacteristic:(nonnull CBCharacteristic *)characteristic {
     NSData *sensorData = characteristic.value;
     const uint8_t *bodyData = sensorData.bytes;
     NSString *bodyDataString;

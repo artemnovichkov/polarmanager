@@ -64,7 +64,7 @@
 				AC2CF8DA1C80110C009028EA /* CaloriesCalculator */,
 				AC2CF8DD1C80110C009028EA /* Categories */,
 				AC2CF8E01C80110C009028EA /* HeartRateData */,
-				AC2CF8EA1C8011BF009028EA /* HealthDataCollector */,
+				AC2CF8EA1C8011BF009028EA /* HeartRateDataCollector */,
 			);
 			path = PolarManager;
 			sourceTree = "<group>";
@@ -97,14 +97,14 @@
 			path = HeartRateData;
 			sourceTree = "<group>";
 		};
-		AC2CF8EA1C8011BF009028EA /* HealthDataCollector */ = {
+		AC2CF8EA1C8011BF009028EA /* HeartRateDataCollector */ = {
 			isa = PBXGroup;
 			children = (
 				AC2CF8EE1C801546009028EA /* HeartRateDataCollectorProtocol.h */,
 				AC2CF8EB1C8011DD009028EA /* HeartRateDataCollector.h */,
 				AC2CF8EC1C8011DD009028EA /* HeartRateDataCollector.m */,
 			);
-			name = HealthDataCollector;
+			name = HeartRateDataCollector;
 			sourceTree = "<group>";
 		};
 		AC6156BE1C7EB5CE0026D81B = {

@@ -15,6 +15,7 @@
 
 @property (nonatomic, weak) id<PolarManagerDelegate> delegate;
 
+- (void)startCollectHealthData;
 - (void)stop;
 
 @end
