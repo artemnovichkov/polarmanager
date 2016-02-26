@@ -13,7 +13,7 @@
 
 #pragma mark - MetricCalculatorProtocol
 
-- (id<MetricCalculatorProtocol>)calculateMetricForHeartRateData:(NSArray<NSNumber *> *)heartRateData
+- (id<MetricProtocol>)calculateMetricForHeartRateData:(NSArray<NSNumber *> *)heartRateData
                                                             age:(NSInteger)age
                                                    fitnessLevel:(FitnessLevel)fitnessLevel
                                                        duration:(CGFloat)duration {

@@ -7,7 +7,7 @@
 //
 
 @import UIKit;
-@protocol MetricCalculatorProtocol;
+@protocol MetricProtocol;
 
 typedef NS_ENUM(NSUInteger, FitnessLevel) {
     FitnessLevelBeginner,
@@ -17,7 +17,7 @@ typedef NS_ENUM(NSUInteger, FitnessLevel) {
 
 @protocol MetricCalculatorProtocol <NSObject>
 
-- (id<MetricCalculatorProtocol>)calculateMetricForHeartRateData:(NSArray<NSNumber *> *)heartRateData
+- (id<MetricProtocol>)calculateMetricForHeartRateData:(NSArray<NSNumber *> *)heartRateData
                                                             age:(NSInteger)age
                                                    fitnessLevel:(FitnessLevel)fitnessLevel
                                                        duration:(CGFloat)duration;
