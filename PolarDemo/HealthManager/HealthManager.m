@@ -64,21 +64,6 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
 
 #pragma mark - CBCentralManagerDelegate
 
-- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
-    peripheral.delegate = self;
-    [peripheral discoverServices:nil];
-}
-
-- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary<NSString *, id> *)advertisementData RSSI:(NSNumber *)RSSI {
-    NSString *localName = advertisementData[CBAdvertisementDataLocalNameKey];
-    if (localName.length > 0) {
-        NSLog(@"Found the heart rate monitor: %@", localName);
-        [self.centralManager stopScan];
-        self.connectedPeripheral = peripheral;
-        [self.centralManager connectPeripheral:peripheral options:nil];
-    }
-}
-
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
     if ([self.delegate respondsToSelector:@selector(healthManager:didUpdateState:)]) {
         [self.delegate healthManager:self didUpdateState:central.state];
@@ -86,6 +71,21 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
     if (central.state == CBCentralManagerStatePoweredOn) {
         [central scanForPeripheralsWithServices:nil options:nil];
     }
+}
+
+- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary<NSString *, id> *)advertisementData RSSI:(NSNumber *)RSSI {
+    NSString *localName = advertisementData[CBAdvertisementDataLocalNameKey];
+    if (localName.length > 0) {
+        NSLog(@"Found the heart rate monitor: %@", localName);
+        [central stopScan];
+        self.connectedPeripheral = peripheral;
+        [central connectPeripheral:peripheral options:nil];
+    }
+}
+
+- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
+    peripheral.delegate = self;
+    [peripheral discoverServices:nil];
 }
 
 #pragma mark - CBPeripheralDelegate

@@ -7,8 +7,8 @@
 //
 
 @import UIKit;
-@protocol MetricProtocol;
 #import "HeartRateDataCollectorProtocol.h"
+#import "MetricProtocol.h"
 
 @interface HeartRateDataCollector : NSObject <HeartRateDataCollectorProtocol>
 

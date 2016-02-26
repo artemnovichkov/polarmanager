@@ -7,41 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC1772641C802BD100D5F37E /* Metric.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1772631C802BD100D5F37E /* Metric.m */; };
-		AC1772681C803F9B00D5F37E /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1772671C803F9B00D5F37E /* NSString+Additions.m */; };
-		AC2CF8E61C80110C009028EA /* CaloriesCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2CF8DC1C80110C009028EA /* CaloriesCalculator.m */; };
-		AC2CF8E71C80110C009028EA /* CBUUID+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2CF8DF1C80110C009028EA /* CBUUID+Additions.m */; };
-		AC2CF8E81C80110C009028EA /* HeartRateData.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2CF8E21C80110C009028EA /* HeartRateData.m */; };
-		AC2CF8E91C80110C009028EA /* HealthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2CF8E51C80110C009028EA /* HealthManager.m */; };
-		AC2CF8ED1C8011DD009028EA /* HeartRateDataCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2CF8EC1C8011DD009028EA /* HeartRateDataCollector.m */; };
+		AC1772861C80565D00D5F37E /* CaloriesCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = AC17726C1C80565D00D5F37E /* CaloriesCalculator.m */; };
+		AC1772871C80565D00D5F37E /* CBUUID+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1772701C80565D00D5F37E /* CBUUID+Additions.m */; };
+		AC1772891C80565D00D5F37E /* HealthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1772741C80565D00D5F37E /* HealthManager.m */; };
+		AC17728B1C80565D00D5F37E /* HeartRateDataCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = AC17727C1C80565D00D5F37E /* HeartRateDataCollector.m */; };
+		AC17728C1C80565D00D5F37E /* Metric.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1772811C80565D00D5F37E /* Metric.m */; };
+		AC17728D1C80565D00D5F37E /* MetricCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1772841C80565D00D5F37E /* MetricCalculator.m */; };
+		AC1772921C80568900D5F37E /* HeartRateData.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1772901C80568900D5F37E /* HeartRateData.m */; };
+		AC1772951C80579D00D5F37E /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1772941C80579D00D5F37E /* NSString+Additions.m */; };
 		AC6156CC1C7EB5CE0026D81B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6156CB1C7EB5CE0026D81B /* main.m */; };
 		AC6156CF1C7EB5CE0026D81B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6156CE1C7EB5CE0026D81B /* AppDelegate.m */; };
 		AC6156D21C7EB5CE0026D81B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6156D11C7EB5CE0026D81B /* ViewController.m */; };
 		AC6156D51C7EB5CE0026D81B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6156D31C7EB5CE0026D81B /* Main.storyboard */; };
 		AC6156D71C7EB5CE0026D81B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC6156D61C7EB5CE0026D81B /* Assets.xcassets */; };
 		AC6156DA1C7EB5CE0026D81B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6156D81C7EB5CE0026D81B /* LaunchScreen.storyboard */; };
-		ACAA6F371C80287600AC5690 /* MetricCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAA6F361C80287600AC5690 /* MetricCalculator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AC1772621C802BD100D5F37E /* Metric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Metric.h; path = MetricCalculator/Metric/Metric.h; sourceTree = "<group>"; };
-		AC1772631C802BD100D5F37E /* Metric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Metric.m; path = MetricCalculator/Metric/Metric.m; sourceTree = "<group>"; };
-		AC1772651C802FB500D5F37E /* MetricCalculatorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetricCalculatorProtocol.h; path = MetricCalculator/MetricCalculatorProtocol.h; sourceTree = "<group>"; };
-		AC1772661C803F9B00D5F37E /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Additions.h"; path = "PolarManager/Categories/NSString+Additions.h"; sourceTree = "<group>"; };
-		AC1772671C803F9B00D5F37E /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Additions.m"; path = "PolarManager/Categories/NSString+Additions.m"; sourceTree = "<group>"; };
-		AC1772691C8047B400D5F37E /* HealthManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthManagerProtocol.h; sourceTree = "<group>"; };
-		AC2CF8DB1C80110C009028EA /* CaloriesCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaloriesCalculator.h; sourceTree = "<group>"; };
-		AC2CF8DC1C80110C009028EA /* CaloriesCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaloriesCalculator.m; sourceTree = "<group>"; };
-		AC2CF8DE1C80110C009028EA /* CBUUID+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBUUID+Additions.h"; sourceTree = "<group>"; };
-		AC2CF8DF1C80110C009028EA /* CBUUID+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBUUID+Additions.m"; sourceTree = "<group>"; };
-		AC2CF8E11C80110C009028EA /* HeartRateData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartRateData.h; sourceTree = "<group>"; };
-		AC2CF8E21C80110C009028EA /* HeartRateData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeartRateData.m; sourceTree = "<group>"; };
-		AC2CF8E31C80110C009028EA /* HeartRateDataProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartRateDataProtocol.h; sourceTree = "<group>"; };
-		AC2CF8E41C80110C009028EA /* HealthManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthManager.h; sourceTree = "<group>"; };
-		AC2CF8E51C80110C009028EA /* HealthManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthManager.m; sourceTree = "<group>"; };
-		AC2CF8EB1C8011DD009028EA /* HeartRateDataCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartRateDataCollector.h; path = HeartRateDataCollector/HeartRateDataCollector.h; sourceTree = "<group>"; };
-		AC2CF8EC1C8011DD009028EA /* HeartRateDataCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeartRateDataCollector.m; path = HeartRateDataCollector/HeartRateDataCollector.m; sourceTree = "<group>"; };
-		AC2CF8EE1C801546009028EA /* HeartRateDataCollectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartRateDataCollectorProtocol.h; path = HeartRateDataCollector/HeartRateDataCollectorProtocol.h; sourceTree = "<group>"; };
+		AC17726B1C80565D00D5F37E /* CaloriesCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaloriesCalculator.h; sourceTree = "<group>"; };
+		AC17726C1C80565D00D5F37E /* CaloriesCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaloriesCalculator.m; sourceTree = "<group>"; };
+		AC17726D1C80565D00D5F37E /* CaloriesCalculatorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaloriesCalculatorProtocol.h; sourceTree = "<group>"; };
+		AC17726F1C80565D00D5F37E /* CBUUID+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBUUID+Additions.h"; sourceTree = "<group>"; };
+		AC1772701C80565D00D5F37E /* CBUUID+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBUUID+Additions.m"; sourceTree = "<group>"; };
+		AC1772731C80565D00D5F37E /* HealthManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HealthManager.h; path = PolarDemo/HealthManager/HealthManager.h; sourceTree = SOURCE_ROOT; };
+		AC1772741C80565D00D5F37E /* HealthManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HealthManager.m; path = PolarDemo/HealthManager/HealthManager.m; sourceTree = SOURCE_ROOT; };
+		AC1772751C80565D00D5F37E /* HealthManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HealthManagerProtocol.h; path = PolarDemo/HealthManager/HealthManagerProtocol.h; sourceTree = SOURCE_ROOT; };
+		AC17727B1C80565D00D5F37E /* HeartRateDataCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartRateDataCollector.h; sourceTree = "<group>"; };
+		AC17727C1C80565D00D5F37E /* HeartRateDataCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeartRateDataCollector.m; sourceTree = "<group>"; };
+		AC17727D1C80565D00D5F37E /* HeartRateDataCollectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartRateDataCollectorProtocol.h; sourceTree = "<group>"; };
+		AC1772801C80565D00D5F37E /* Metric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Metric.h; sourceTree = "<group>"; };
+		AC1772811C80565D00D5F37E /* Metric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Metric.m; sourceTree = "<group>"; };
+		AC1772821C80565D00D5F37E /* MetricProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetricProtocol.h; sourceTree = "<group>"; };
+		AC1772831C80565D00D5F37E /* MetricCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetricCalculator.h; sourceTree = "<group>"; };
+		AC1772841C80565D00D5F37E /* MetricCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetricCalculator.m; sourceTree = "<group>"; };
+		AC1772851C80565D00D5F37E /* MetricCalculatorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetricCalculatorProtocol.h; sourceTree = "<group>"; };
+		AC17728F1C80568900D5F37E /* HeartRateData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartRateData.h; sourceTree = "<group>"; };
+		AC1772901C80568900D5F37E /* HeartRateData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeartRateData.m; sourceTree = "<group>"; };
+		AC1772911C80568900D5F37E /* HeartRateDataProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartRateDataProtocol.h; sourceTree = "<group>"; };
+		AC1772931C80579D00D5F37E /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
+		AC1772941C80579D00D5F37E /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
 		AC6156C71C7EB5CE0026D81B /* PolarDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PolarDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC6156CB1C7EB5CE0026D81B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AC6156CD1C7EB5CE0026D81B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -52,10 +56,6 @@
 		AC6156D61C7EB5CE0026D81B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC6156D91C7EB5CE0026D81B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC6156DB1C7EB5CE0026D81B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ACAA6F351C80287600AC5690 /* MetricCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetricCalculator.h; path = MetricCalculator/MetricCalculator.h; sourceTree = "<group>"; };
-		ACAA6F361C80287600AC5690 /* MetricCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MetricCalculator.m; path = MetricCalculator/MetricCalculator.m; sourceTree = "<group>"; };
-		ACAA6F381C802A7000AC5690 /* CaloriesCalculatorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaloriesCalculatorProtocol.h; sourceTree = "<group>"; };
-		ACAA6F3A1C802B5C00AC5690 /* MetricProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetricProtocol.h; path = MetricCalculator/Metric/MetricProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,59 +69,84 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AC2CF8D91C80110C009028EA /* HealthManager */ = {
+		AC17726A1C80565D00D5F37E /* CaloriesCalculator */ = {
 			isa = PBXGroup;
 			children = (
-				AC1772691C8047B400D5F37E /* HealthManagerProtocol.h */,
-				AC2CF8E41C80110C009028EA /* HealthManager.h */,
-				AC2CF8E51C80110C009028EA /* HealthManager.m */,
-				AC2CF8EA1C8011BF009028EA /* HeartRateDataCollector */,
-				AC2CF8DA1C80110C009028EA /* CaloriesCalculator */,
-				ACAA6F341C80286200AC5690 /* MetricCalculator */,
-				AC2CF8DD1C80110C009028EA /* Categories */,
+				AC17726D1C80565D00D5F37E /* CaloriesCalculatorProtocol.h */,
+				AC17726B1C80565D00D5F37E /* CaloriesCalculator.h */,
+				AC17726C1C80565D00D5F37E /* CaloriesCalculator.m */,
 			);
-			name = HealthManager;
-			path = PolarManager;
+			name = CaloriesCalculator;
+			path = PolarDemo/HealthManager/CaloriesCalculator;
+			sourceTree = SOURCE_ROOT;
+		};
+		AC17726E1C80565D00D5F37E /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				AC17726F1C80565D00D5F37E /* CBUUID+Additions.h */,
+				AC1772701C80565D00D5F37E /* CBUUID+Additions.m */,
+			);
+			name = Categories;
+			path = PolarDemo/HealthManager/Categories;
+			sourceTree = SOURCE_ROOT;
+		};
+		AC17727A1C80565D00D5F37E /* HeartRateDataCollector */ = {
+			isa = PBXGroup;
+			children = (
+				AC17727D1C80565D00D5F37E /* HeartRateDataCollectorProtocol.h */,
+				AC17727B1C80565D00D5F37E /* HeartRateDataCollector.h */,
+				AC17727C1C80565D00D5F37E /* HeartRateDataCollector.m */,
+				AC17728E1C80568900D5F37E /* HeartRateData */,
+			);
+			name = HeartRateDataCollector;
+			path = PolarDemo/HealthManager/HeartRateDataCollector;
+			sourceTree = SOURCE_ROOT;
+		};
+		AC17727E1C80565D00D5F37E /* MetricCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				AC1772851C80565D00D5F37E /* MetricCalculatorProtocol.h */,
+				AC1772831C80565D00D5F37E /* MetricCalculator.h */,
+				AC1772841C80565D00D5F37E /* MetricCalculator.m */,
+				AC17727F1C80565D00D5F37E /* Metric */,
+			);
+			name = MetricCalculator;
+			path = PolarDemo/HealthManager/MetricCalculator;
+			sourceTree = SOURCE_ROOT;
+		};
+		AC17727F1C80565D00D5F37E /* Metric */ = {
+			isa = PBXGroup;
+			children = (
+				AC1772821C80565D00D5F37E /* MetricProtocol.h */,
+				AC1772801C80565D00D5F37E /* Metric.h */,
+				AC1772811C80565D00D5F37E /* Metric.m */,
+			);
+			path = Metric;
 			sourceTree = "<group>";
 		};
-		AC2CF8DA1C80110C009028EA /* CaloriesCalculator */ = {
+		AC17728E1C80568900D5F37E /* HeartRateData */ = {
 			isa = PBXGroup;
 			children = (
-				ACAA6F381C802A7000AC5690 /* CaloriesCalculatorProtocol.h */,
-				AC2CF8DB1C80110C009028EA /* CaloriesCalculator.h */,
-				AC2CF8DC1C80110C009028EA /* CaloriesCalculator.m */,
-			);
-			path = CaloriesCalculator;
-			sourceTree = "<group>";
-		};
-		AC2CF8DD1C80110C009028EA /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				AC2CF8DE1C80110C009028EA /* CBUUID+Additions.h */,
-				AC2CF8DF1C80110C009028EA /* CBUUID+Additions.m */,
-			);
-			path = Categories;
-			sourceTree = "<group>";
-		};
-		AC2CF8E01C80110C009028EA /* HeartRateData */ = {
-			isa = PBXGroup;
-			children = (
-				AC2CF8E31C80110C009028EA /* HeartRateDataProtocol.h */,
-				AC2CF8E11C80110C009028EA /* HeartRateData.h */,
-				AC2CF8E21C80110C009028EA /* HeartRateData.m */,
+				AC1772911C80568900D5F37E /* HeartRateDataProtocol.h */,
+				AC17728F1C80568900D5F37E /* HeartRateData.h */,
+				AC1772901C80568900D5F37E /* HeartRateData.m */,
 			);
 			path = HeartRateData;
 			sourceTree = "<group>";
 		};
-		AC2CF8EA1C8011BF009028EA /* HeartRateDataCollector */ = {
+		AC2CF8D91C80110C009028EA /* HealthManager */ = {
 			isa = PBXGroup;
 			children = (
-				AC2CF8EE1C801546009028EA /* HeartRateDataCollectorProtocol.h */,
-				AC2CF8EB1C8011DD009028EA /* HeartRateDataCollector.h */,
-				AC2CF8EC1C8011DD009028EA /* HeartRateDataCollector.m */,
-				AC2CF8E01C80110C009028EA /* HeartRateData */,
+				AC1772751C80565D00D5F37E /* HealthManagerProtocol.h */,
+				AC1772731C80565D00D5F37E /* HealthManager.h */,
+				AC1772741C80565D00D5F37E /* HealthManager.m */,
+				AC17727A1C80565D00D5F37E /* HeartRateDataCollector */,
+				AC17726A1C80565D00D5F37E /* CaloriesCalculator */,
+				AC17727E1C80565D00D5F37E /* MetricCalculator */,
+				AC17726E1C80565D00D5F37E /* Categories */,
 			);
-			name = HeartRateDataCollector;
+			name = HealthManager;
+			path = PolarManager;
 			sourceTree = "<group>";
 		};
 		AC6156BE1C7EB5CE0026D81B = {
@@ -146,10 +171,10 @@
 				AC2CF8D91C80110C009028EA /* HealthManager */,
 				AC6156CD1C7EB5CE0026D81B /* AppDelegate.h */,
 				AC6156CE1C7EB5CE0026D81B /* AppDelegate.m */,
-				AC1772661C803F9B00D5F37E /* NSString+Additions.h */,
-				AC1772671C803F9B00D5F37E /* NSString+Additions.m */,
 				AC6156D01C7EB5CE0026D81B /* ViewController.h */,
 				AC6156D11C7EB5CE0026D81B /* ViewController.m */,
+				AC1772931C80579D00D5F37E /* NSString+Additions.h */,
+				AC1772941C80579D00D5F37E /* NSString+Additions.m */,
 				AC6156D31C7EB5CE0026D81B /* Main.storyboard */,
 				AC6156D61C7EB5CE0026D81B /* Assets.xcassets */,
 				AC6156D81C7EB5CE0026D81B /* LaunchScreen.storyboard */,
@@ -165,27 +190,6 @@
 				AC6156CB1C7EB5CE0026D81B /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		ACAA6F341C80286200AC5690 /* MetricCalculator */ = {
-			isa = PBXGroup;
-			children = (
-				AC1772651C802FB500D5F37E /* MetricCalculatorProtocol.h */,
-				ACAA6F351C80287600AC5690 /* MetricCalculator.h */,
-				ACAA6F361C80287600AC5690 /* MetricCalculator.m */,
-				ACAA6F391C802B4200AC5690 /* Metric */,
-			);
-			name = MetricCalculator;
-			sourceTree = "<group>";
-		};
-		ACAA6F391C802B4200AC5690 /* Metric */ = {
-			isa = PBXGroup;
-			children = (
-				ACAA6F3A1C802B5C00AC5690 /* MetricProtocol.h */,
-				AC1772621C802BD100D5F37E /* Metric.h */,
-				AC1772631C802BD100D5F37E /* Metric.m */,
-			);
-			name = Metric;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,17 +262,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC17728B1C80565D00D5F37E /* HeartRateDataCollector.m in Sources */,
+				AC17728D1C80565D00D5F37E /* MetricCalculator.m in Sources */,
 				AC6156D21C7EB5CE0026D81B /* ViewController.m in Sources */,
-				ACAA6F371C80287600AC5690 /* MetricCalculator.m in Sources */,
-				AC2CF8E91C80110C009028EA /* HealthManager.m in Sources */,
-				AC1772681C803F9B00D5F37E /* NSString+Additions.m in Sources */,
-				AC1772641C802BD100D5F37E /* Metric.m in Sources */,
-				AC2CF8E71C80110C009028EA /* CBUUID+Additions.m in Sources */,
+				AC1772951C80579D00D5F37E /* NSString+Additions.m in Sources */,
+				AC1772871C80565D00D5F37E /* CBUUID+Additions.m in Sources */,
+				AC17728C1C80565D00D5F37E /* Metric.m in Sources */,
 				AC6156CF1C7EB5CE0026D81B /* AppDelegate.m in Sources */,
-				AC2CF8ED1C8011DD009028EA /* HeartRateDataCollector.m in Sources */,
+				AC1772921C80568900D5F37E /* HeartRateData.m in Sources */,
 				AC6156CC1C7EB5CE0026D81B /* main.m in Sources */,
-				AC2CF8E81C80110C009028EA /* HeartRateData.m in Sources */,
-				AC2CF8E61C80110C009028EA /* CaloriesCalculator.m in Sources */,
+				AC1772861C80565D00D5F37E /* CaloriesCalculator.m in Sources */,
+				AC1772891C80565D00D5F37E /* HealthManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

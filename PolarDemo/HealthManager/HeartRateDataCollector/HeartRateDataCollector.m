@@ -11,7 +11,6 @@
 #import "HeartRateData.h"
 #import "MetricCalculator.h"
 #import "CaloriesCalculator.h"
-#import "MetricProtocol.h"
 
 @interface HeartRateDataCollector ()
 
