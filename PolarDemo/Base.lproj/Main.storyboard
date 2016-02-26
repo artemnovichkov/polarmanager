@@ -17,9 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wlj-eW-ik6">
-                                <rect key="frame" x="279" y="289" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No data for now, click &quot;Start test workout&quot;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wlj-eW-ik6">
+                                <rect key="frame" x="156" y="289" width="288" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -43,24 +43,42 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="psK-bQ-aI4">
-                                <rect key="frame" x="238" y="226" width="124" height="30"/>
+                                <rect key="frame" x="138" y="226" width="124" height="30"/>
                                 <state key="normal" title="Start test workout"/>
                                 <connections>
                                     <action selector="startWorkoutButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IYf-kE-Cyf"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User with parameters: 22 years, 78 kg, Beginner FitnessLevel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZK-ru-Rnf">
+                                <rect key="frame" x="8" y="20" width="584" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="txS-NV-Nga">
+                                <rect key="frame" x="339" y="226" width="122" height="30"/>
+                                <state key="normal" title="Stop test workout"/>
+                                <connections>
+                                    <action selector="stopWorkoutButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CVa-aM-Gp2"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="4qc-e1-JWE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3e0-wZ-CUh"/>
+                            <constraint firstItem="GZK-ru-Rnf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="Bsy-Yr-bsb"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FdP-Zb-qIH" secondAttribute="bottom" constant="8" id="H0E-W2-KmQ"/>
                             <constraint firstItem="CHs-ej-Drm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="L1f-yf-rOg"/>
-                            <constraint firstItem="Wlj-eW-ik6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ZJw-en-5Ki"/>
+                            <constraint firstItem="txS-NV-Nga" firstAttribute="top" secondItem="CHs-ej-Drm" secondAttribute="bottom" constant="8" id="Q7S-Rv-XZB"/>
                             <constraint firstItem="FdP-Zb-qIH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="Zj8-5v-aQ4"/>
                             <constraint firstItem="4qc-e1-JWE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="106" id="aSu-Rc-3nA"/>
+                            <constraint firstItem="txS-NV-Nga" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="100" id="cf0-RM-8Qj"/>
+                            <constraint firstItem="Wlj-eW-ik6" firstAttribute="top" secondItem="psK-bQ-aI4" secondAttribute="bottom" constant="33" id="e6h-0b-r4U"/>
                             <constraint firstItem="CHs-ej-Drm" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="48" id="hWW-io-Yj9"/>
-                            <constraint firstItem="psK-bQ-aI4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nXr-bU-jyK"/>
+                            <constraint firstAttribute="trailing" secondItem="GZK-ru-Rnf" secondAttribute="trailing" constant="8" id="lWO-GX-NdS"/>
+                            <constraint firstItem="psK-bQ-aI4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-100" id="nXr-bU-jyK"/>
                             <constraint firstItem="Wlj-eW-ik6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tIX-nJ-vQ4"/>
+                            <constraint firstItem="GZK-ru-Rnf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="vdG-1C-xwM"/>
                             <constraint firstItem="psK-bQ-aI4" firstAttribute="top" secondItem="CHs-ej-Drm" secondAttribute="bottom" constant="8" id="wp5-22-qHV"/>
                             <constraint firstAttribute="trailing" secondItem="FdP-Zb-qIH" secondAttribute="trailing" constant="8" id="zXH-7J-VK2"/>
                         </constraints>

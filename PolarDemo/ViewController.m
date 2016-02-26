@@ -9,9 +9,13 @@
 #import "ViewController.h"
 #import "PolarManager.h"
 
+#import "NSString+Additions.h"
+
 @interface ViewController () <PolarManagerDelegate>
 
 @property (nonatomic) PolarManager *polarManager;
+@property (nonatomic) NSTimer *workoutTimer;
+@property (nonatomic) CGFloat workoutTime;
 
 @end
 
@@ -22,13 +26,10 @@
     self.polarManager = [[PolarManager alloc] init];
     self.polarManager.delegate = self;
 }
-- (IBAction)startWorkoutButtonAction:(UIButton *)sender {
-    sender.titleLabel.text = @"Started";
-    [self.polarManager startCollectHealthData];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        sender.titleLabel.text = @"Finished";
-        [self.polarManager stopCollectHealthData];
-    });
+
+- (void)updateTime {
+    self.workoutTime += 0.05f;
+    self.infoLabel.text = [NSString formattedStringFromSeconds:self.workoutTime];
 }
 
 - (void) doHeartBeat {
@@ -44,6 +45,23 @@
     [layer addAnimation:pulseAnimation forKey:@"scale"];
     
     self.pulseTimer = [NSTimer scheduledTimerWithTimeInterval:(60. / self.heartRate) target:self selector:@selector(doHeartBeat) userInfo:nil repeats:NO];
+}
+
+#pragma mark - Actions
+
+- (IBAction)startWorkoutButtonAction:(UIButton *)sender {
+    [self.polarManager startCollectHealthData];
+    self.workoutTimer = [NSTimer timerWithTimeInterval:0.05 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.workoutTimer forMode:NSRunLoopCommonModes];
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+}
+
+- (IBAction)stopWorkoutButtonAction:(id)sender {
+    self.workoutTime = 0.f;
+    [self.workoutTimer invalidate];
+    self.workoutTimer = nil;
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+    [self.polarManager stopCollectHealthData];
 }
 
 #pragma mark - PolarManagerDelegate
@@ -79,7 +97,13 @@
 }
 
 - (void)polarManager:(PolarManager *)polarManager didReceiveMetric:(id<MetricProtocol>)metric {
-    
+    NSString *infoString = [NSString stringWithFormat:@"User's max HR: %.0f bpm\n"
+                            @"User's avg HR DURING workout: %.0f bpm\n"
+                            @"User's max HR DURING workout: %.0f bpm\n"
+                            @"Avg Intensity: %.2f %%\n"
+                            @"Target HR: %.0f bpm\n"
+                            @"%%Intensity: %.2f %%\n", metric.maxHR, metric.avgHR, metric.maxWorkoutHR, metric.avgIntensity * 100, metric.targetHR, metric.procentIntensity * 100];
+    self.infoLabel.text = infoString;
 }
 
 @end
