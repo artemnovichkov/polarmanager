@@ -34,9 +34,10 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
     if (self) {
         self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
         self.heartRateDataCollector = [[HeartRateDataCollector alloc] init];
+        __weak typeof(self) weakSelf = self;
         [self.heartRateDataCollector setFinishBlock:^(id<MetricProtocol> metric) {
-            if ([self.delegate respondsToSelector:@selector(polarManager:didReceiveMetric:)]) {
-                [self.delegate polarManager:self didReceiveMetric:metric];
+            if ([weakSelf.delegate respondsToSelector:@selector(polarManager:didReceiveMetric:)]) {
+                [weakSelf.delegate polarManager:weakSelf didReceiveMetric:metric];
             }
         }];
     }
