@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "PolarManager.h"
+#import "CaloriesCalculator.h"
 
 @interface ViewController () <PolarManagerDelegate>
 
@@ -19,12 +20,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.polarManager = [[PolarManager alloc] init];
-    self.polarManager.delegate = self;
-    [self.polarManager start];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.polarManager stop];
-    });
+    CaloriesCalculator *calc = [[CaloriesCalculator alloc] init];
+    NSLog(@"Burnt %f", [calc burntCaloriesForAvgHR:120.f exerciseDuration:0.2]);
+//    self.polarManager = [[PolarManager alloc] init];
+//    self.polarManager.delegate = self;
+//    [self.polarManager start];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self.polarManager stop];
+//    });
 }
 
 - (void) doHeartBeat {

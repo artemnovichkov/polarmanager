@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AC2CF8D21C7EFFD3009028EA /* PolarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2CF8D11C7EFFD3009028EA /* PolarManager.m */; };
 		AC2CF8D51C7F09B5009028EA /* CBUUID+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2CF8D41C7F09B5009028EA /* CBUUID+Additions.m */; };
+		AC2CF8D81C7FFC4F009028EA /* CaloriesCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2CF8D71C7FFC4F009028EA /* CaloriesCalculator.m */; };
 		AC6156CC1C7EB5CE0026D81B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6156CB1C7EB5CE0026D81B /* main.m */; };
 		AC6156CF1C7EB5CE0026D81B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6156CE1C7EB5CE0026D81B /* AppDelegate.m */; };
 		AC6156D21C7EB5CE0026D81B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6156D11C7EB5CE0026D81B /* ViewController.m */; };
@@ -23,6 +24,8 @@
 		AC2CF8D11C7EFFD3009028EA /* PolarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PolarManager.m; sourceTree = "<group>"; };
 		AC2CF8D31C7F09B5009028EA /* CBUUID+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBUUID+Additions.h"; sourceTree = "<group>"; };
 		AC2CF8D41C7F09B5009028EA /* CBUUID+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBUUID+Additions.m"; sourceTree = "<group>"; };
+		AC2CF8D61C7FFC4F009028EA /* CaloriesCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaloriesCalculator.h; sourceTree = "<group>"; };
+		AC2CF8D71C7FFC4F009028EA /* CaloriesCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaloriesCalculator.m; sourceTree = "<group>"; };
 		AC6156C71C7EB5CE0026D81B /* PolarDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PolarDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC6156CB1C7EB5CE0026D81B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AC6156CD1C7EB5CE0026D81B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -84,6 +87,8 @@
 				AC6156CA1C7EB5CE0026D81B /* Supporting Files */,
 				AC2CF8D31C7F09B5009028EA /* CBUUID+Additions.h */,
 				AC2CF8D41C7F09B5009028EA /* CBUUID+Additions.m */,
+				AC2CF8D61C7FFC4F009028EA /* CaloriesCalculator.h */,
+				AC2CF8D71C7FFC4F009028EA /* CaloriesCalculator.m */,
 			);
 			path = PolarDemo;
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 				AC2CF8D21C7EFFD3009028EA /* PolarManager.m in Sources */,
 				AC6156D21C7EB5CE0026D81B /* ViewController.m in Sources */,
 				AC6156CF1C7EB5CE0026D81B /* AppDelegate.m in Sources */,
+				AC2CF8D81C7FFC4F009028EA /* CaloriesCalculator.m in Sources */,
 				AC6156CC1C7EB5CE0026D81B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
