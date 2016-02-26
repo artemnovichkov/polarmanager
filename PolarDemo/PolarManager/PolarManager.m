@@ -39,7 +39,11 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
 }
 
 - (void)startCollectHealthData {
-    self.heartRateDataCollector.needToCollectData = YES;
+    if (self.centralManager.state == CBCentralManagerStatePoweredOn) {
+        self.heartRateDataCollector.needToCollectData = YES;
+    } else {
+        //Error
+    }
 }
 
 - (void)stop {

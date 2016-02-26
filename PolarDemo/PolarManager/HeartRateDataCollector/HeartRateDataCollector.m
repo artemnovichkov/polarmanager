@@ -9,10 +9,12 @@
 @import CoreBluetooth;
 #import "HeartRateDataCollector.h"
 #import "HeartRateData.h"
+#import "CaloriesCalculator.h"
 
 @interface HeartRateDataCollector ()
 
 @property (nonatomic) NSMutableArray<NSNumber *> *storedBpms;
+@property (nonatomic) NSDate *collectingStartDate;
 
 @end
 
@@ -24,6 +26,13 @@
         self.storedBpms = [NSMutableArray array];
     }
     return self;
+}
+
+- (void)calculateMetrics {
+    CGFloat duration = ([NSDate date].timeIntervalSince1970 - self.collectingStartDate.timeIntervalSince1970);
+    duration /= 60.f * 60.f;
+    CaloriesCalculator *calc = [[CaloriesCalculator alloc] init];
+    NSLog(@"Burnt %f", [calc burntCaloriesForAvgHR:self.averageBpm exerciseDuration:duration]);
 }
 
 #pragma mark - HeartRateDataCollectorProtocol
@@ -93,5 +102,15 @@
     return bodyDataString;
 }
 
+#pragma mark - Setters
+
+- (void)setNeedToCollectData:(BOOL)needToCollectData {
+    _needToCollectData = needToCollectData;
+    if (needToCollectData) {
+        self.collectingStartDate = [NSDate date];
+    } else {
+        [self calculateMetrics];
+    }
+}
 
 @end

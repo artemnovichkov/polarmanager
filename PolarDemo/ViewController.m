@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "PolarManager.h"
-#import "CaloriesCalculator.h"
 
 @interface ViewController () <PolarManagerDelegate>
 
@@ -20,15 +19,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    CaloriesCalculator *calc = [[CaloriesCalculator alloc] init];
-    NSLog(@"Burnt %f", [calc burntCaloriesForAvgHR:120.f exerciseDuration:0.2]);
     self.polarManager = [[PolarManager alloc] init];
     self.polarManager.delegate = self;
 }
 - (IBAction)startWorkoutButtonAction:(UIButton *)sender {
     sender.titleLabel.text = @"Started";
     [self.polarManager startCollectHealthData];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         sender.titleLabel.text = @"Finished";
         [self.polarManager stop];
     });
@@ -75,7 +72,7 @@
     self.bluetoothStatusLabel.text = statusString;
 }
 
-- (void)polarManager:(PolarManager *)polarManager didReceivedData:(id<HeartRateDataProtocol>)heartRateData {
+- (void)polarManager:(PolarManager *)polarManager didReceiveData:(id<HeartRateDataProtocol>)heartRateData {
     self.heartRate = heartRateData.bpm;
     self.heartRateLabel.text = [NSString stringWithFormat:@"%.0f bpm", heartRateData.bpm];
     [self doHeartBeat];
