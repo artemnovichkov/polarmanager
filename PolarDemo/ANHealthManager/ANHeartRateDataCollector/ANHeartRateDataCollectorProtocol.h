@@ -1,5 +1,5 @@
 //
-//  HeartRateDataCollectorProtocol.h
+//  ANHeartRateDataCollectorProtocol.h
 //  PolarDemo
 //
 //  Created by Artem on 26/02/16.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @class CBCharacteristic;
-@protocol HeartRateDataProtocol;
+@protocol ANHeartRateDataProtocol;
 
 typedef NS_ENUM(NSUInteger, BodyLocation) {
     BodyLocationChest,
@@ -16,9 +16,9 @@ typedef NS_ENUM(NSUInteger, BodyLocation) {
     BodyLocationNA,
 };
 
-@protocol HeartRateDataCollectorProtocol <NSObject>
+@protocol ANHeartRateDataCollectorProtocol <NSObject>
 
-- (nullable id<HeartRateDataProtocol>)heartBPMDataForCharacteristic:(nonnull CBCharacteristic *)characteristic error:(nullable NSError *)error;
+- (nullable id<ANHeartRateDataProtocol>)heartBPMDataForCharacteristic:(nonnull CBCharacteristic *)characteristic error:(nullable NSError *)error;
 - (nullable NSString *)manufacturerNameForCharacteristic:(nonnull CBCharacteristic *)characteristic;
 - (BodyLocation)bodyLocationForCharacteristic:(nonnull CBCharacteristic *)characteristic;
 

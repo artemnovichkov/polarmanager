@@ -1,13 +1,13 @@
 //
-//  Metric.h
+//  ANMetric.h
 //  PolarDemo
 //
 //  Created by Artem on 26/02/16.
 //  Copyright © 2016 Rosberry. All rights reserved.
 //
 
-#import "MetricProtocol.h"
+#import "ANMetricProtocol.h"
 
-@interface Metric : NSObject <MetricProtocol>
+@interface ANMetric : NSObject <ANMetricProtocol>
 
 @end

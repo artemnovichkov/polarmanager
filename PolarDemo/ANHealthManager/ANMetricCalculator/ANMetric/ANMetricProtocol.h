@@ -1,5 +1,5 @@
 //
-//  MetricProtocol.h
+//  ANMetricProtocol.h
 //  PolarDemo
 //
 //  Created by Artem on 26/02/16.
@@ -8,7 +8,7 @@
 
 @import UIKit;
 
-@protocol MetricProtocol <NSObject>
+@protocol ANMetricProtocol <NSObject>
 
 @property (nonatomic) CGFloat maxHR;
 @property (nonatomic) CGFloat avgHR;

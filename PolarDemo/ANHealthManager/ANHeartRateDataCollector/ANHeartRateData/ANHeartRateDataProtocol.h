@@ -1,5 +1,5 @@
 //
-//  HeartRateDataProtocol.h
+//  ANHeartRateDataProtocol.h
 //  PolarDemo
 //
 //  Created by Artem on 25/02/16.
@@ -8,7 +8,7 @@
 
 @import UIKit;
 
-@protocol HeartRateDataProtocol <NSObject>
+@protocol ANHeartRateDataProtocol <NSObject>
 
 @property (nonatomic) CGFloat bpm;
 @property (nonatomic) NSArray<NSNumber *> *rrIntervals;

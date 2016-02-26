@@ -1,5 +1,5 @@
 //
-//  CaloriesCalculatorProtocol.h
+//  ANCaloriesCalculatorProtocol.h
 //  PolarDemo
 //
 //  Created by Artem on 26/02/16.
@@ -13,7 +13,7 @@ typedef NS_ENUM(NSInteger, GenderType) {
     GenderTypeFemale
 };
 
-@protocol CaloriesCalculatorProtocol <NSObject>
+@protocol ANCaloriesCalculatorProtocol <NSObject>
 
 @property (nonatomic) CGFloat weight;
 @property (nonatomic) NSInteger age;

@@ -1,5 +1,5 @@
 //
-//  HeartRateData.h
+//  ANHeartRateData.h
 //  PolarDemo
 //
 //  Created by Artem on 25/02/16.
@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HeartRateDataProtocol.h"
+#import "ANHeartRateDataProtocol.h"
 
-@interface HeartRateData : NSObject <HeartRateDataProtocol>
+@interface ANHeartRateData : NSObject <ANHeartRateDataProtocol>
 
 @end

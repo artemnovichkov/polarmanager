@@ -1,25 +1,25 @@
 //
-//  MetricCalculator.m
+//  ANMetricCalculator.m
 //  PolarDemo
 //
 //  Created by Artem on 26/02/16.
 //  Copyright © 2016 Rosberry. All rights reserved.
 //
 
-#import "MetricCalculator.h"
-#import "Metric.h"
+#import "ANMetricCalculator.h"
+#import "ANMetric.h"
 
 static NSInteger kMaxHRCoefficient = 220;
 
-@implementation MetricCalculator
+@implementation ANMetricCalculator
 
-#pragma mark - MetricCalculatorProtocol
+#pragma mark - ANMetricCalculatorProtocol
 
-- (id<MetricProtocol>)calculateMetricForHeartRateData:(NSArray<NSNumber *> *)heartRateData
+- (id<ANMetricProtocol>)calculateMetricForHeartRateData:(NSArray<NSNumber *> *)heartRateData
                                                   age:(NSInteger)age
                                          fitnessLevel:(FitnessLevel)fitnessLevel
                                              duration:(CGFloat)duration {
-    Metric *metric = [[Metric alloc] init];
+    ANMetric *metric = [[ANMetric alloc] init];
     metric.maxHR = kMaxHRCoefficient - age;
     metric.avgHR = [[heartRateData valueForKeyPath:@"@avg.self"] floatValue];
     metric.maxWorkoutHR = [[heartRateData valueForKeyPath:@"@max.self"] floatValue];

@@ -1,5 +1,5 @@
 //
-//  HealthManagerProtocol.h
+//  ANHealthManagerProtocol.h
 //  PolarDemo
 //
 //  Created by Artem on 26/02/16.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol HealthManagerProtocol <NSObject>
+@protocol ANHealthManagerProtocol <NSObject>
 
 - (void)startCollectHealthData;
 - (void)stopCollectHealthData;

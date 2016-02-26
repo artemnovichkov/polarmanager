@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "HealthManager.h"
+#import "ANHealthManager.h"
 
 #import "NSString+Additions.h"
 
@@ -21,7 +21,7 @@
 @property (nonatomic, retain) NSTimer *pulseTimer;
 @property (assign) CGFloat heartRate;
 
-@property (nonatomic) HealthManager *healthManager;
+@property (nonatomic) ANHealthManager *healthManager;
 @property (nonatomic) NSTimer *workoutTimer;
 @property (nonatomic) CGFloat workoutTime;
 
@@ -31,7 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.healthManager = [[HealthManager alloc] init];
+    self.healthManager = [[ANHealthManager alloc] init];
     self.healthManager.delegate = self;
 }
 
@@ -77,9 +77,9 @@
     }
 }
 
-#pragma mark - HealthManagerDelegate
+#pragma mark - ANHealthManagerDelegate
 
-- (void)healthManager:(HealthManager *)healthManager didUpdateState:(CBCentralManagerState)state {
+- (void)healthManager:(ANHealthManager *)healthManager didUpdateState:(CBCentralManagerState)state {
     NSString *statusString;
     switch (state) {
         case CBCentralManagerStatePoweredOff:
@@ -103,7 +103,7 @@
     self.bluetoothStatusLabel.text = statusString;
 }
 
-- (void)healthManager:(HealthManager *)healthManager didReceiveData:(id<HeartRateDataProtocol>)heartRateData {
+- (void)healthManager:(ANHealthManager *)healthManager didReceiveData:(id<ANHeartRateDataProtocol>)heartRateData {
     self.heartRate = heartRateData.bpm;
     self.heartRateLabel.text = [NSString stringWithFormat:@"%.0f bpm", heartRateData.bpm];
     static dispatch_once_t onceToken;
@@ -112,15 +112,8 @@
     });
 }
 
-- (void)healthManager:(HealthManager *)healthManager didReceiveMetric:(id<MetricProtocol>)metric {
-    NSString *infoString = [NSString stringWithFormat:@"User's max HR: %.0f bpm\n"
-                            @"User's avg HR DURING workout: %.0f bpm\n"
-                            @"User's max HR DURING workout: %.0f bpm\n"
-                            @"Avg Intensity: %.2f %%\n"
-                            @"Target HR: %.0f bpm\n"
-                            @"%%Intensity: %.2f %%\n"
-                            @"Calories: %.0f cal", metric.maxHR, metric.avgHR, metric.maxWorkoutHR, metric.avgIntensity * 100, metric.targetHR, metric.procentIntensity * 100, metric.burnedCalories];
-    self.infoLabel.text = infoString;
+- (void)healthManager:(ANHealthManager *)healthManager didReceiveMetric:(id<ANMetricProtocol>)metric {
+    self.infoLabel.text = [NSString infoStringForMetric:metric];
 }
 
 @end

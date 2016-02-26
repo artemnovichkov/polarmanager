@@ -1,12 +1,12 @@
 //
-//  CaloriesCalculator.m
+//  ANCaloriesCalculator.m
 //  PolarDemo
 //
 //  Created by Artem on 26/02/16.
 //  Copyright © 2016 Rosberry. All rights reserved.
 //
 
-#import "CaloriesCalculator.h"
+#import "ANCaloriesCalculator.h"
 
 static CGFloat const kMaleFirstKoef = 0.6309;
 static CGFloat const kFemaleFirstKoef = 0.4472;
@@ -20,7 +20,7 @@ static CGFloat const kFemaleThirdKoef = 0.074;
 static CGFloat const kMaleFourthKoef = 55.0969;
 static CGFloat const kFemaleFourthKoef = 20.4022;
 
-@implementation CaloriesCalculator
+@implementation ANCaloriesCalculator
 
 @synthesize weight;
 @synthesize age;
@@ -37,7 +37,7 @@ static CGFloat const kFemaleFourthKoef = 20.4022;
     return self;
 }
 
-#pragma mark - CaloriesCalculatorProtocol
+#pragma mark - ANCaloriesCalculatorProtocol
 
 - (CGFloat)burntCaloriesForAvgHR:(CGFloat)avgHR exerciseDuration:(CGFloat)duration {
     CGFloat koef1 = self.genderType == GenderTypeMale ? kMaleFirstKoef  : kFemaleFirstKoef;

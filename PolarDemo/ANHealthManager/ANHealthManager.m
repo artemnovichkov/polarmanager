@@ -1,13 +1,13 @@
 //
-//  HealthManager.m
+//  ANHealthManager.m
 //  PolarDemo
 //
 //  Created by Artem on 25/02/16.
 //  Copyright © 2016 Rosberry. All rights reserved.
 //
 
-#import "HealthManager.h"
-#import "HeartRateDataCollector.h"
+#import "ANHealthManager.h"
+#import "ANHeartRateDataCollector.h"
 
 #import "CBUUID+Additions.h"
 
@@ -18,23 +18,23 @@ static NSString *const kMeasurementCharacteristicUUID = @"2A37";
 static NSString *const kBodyLocationCharacteristicUUID = @"2A38";
 static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
 
-@interface HealthManager () <CBCentralManagerDelegate, CBPeripheralDelegate>
+@interface ANHealthManager () <CBCentralManagerDelegate, CBPeripheralDelegate>
 
 @property (nonatomic) CBCentralManager *centralManager;
 @property (nonatomic) CBPeripheral *connectedPeripheral;
-@property (nonatomic) HeartRateDataCollector *heartRateDataCollector;
+@property (nonatomic) ANHeartRateDataCollector *heartRateDataCollector;
 
 @end
 
-@implementation HealthManager
+@implementation ANHealthManager
 
 - (instancetype)init {
     self = [super init];
     if (self) {
         self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
-        self.heartRateDataCollector = [[HeartRateDataCollector alloc] init];
+        self.heartRateDataCollector = [[ANHeartRateDataCollector alloc] init];
         __weak typeof(self) weakSelf = self;
-        [self.heartRateDataCollector setCalculatingDidFinishBlock:^(id<MetricProtocol> metric) {
+        [self.heartRateDataCollector setCalculatingDidFinishBlock:^(id<ANMetricProtocol> metric) {
             if ([weakSelf.delegate respondsToSelector:@selector(healthManager:didReceiveMetric:)]) {
                 [weakSelf.delegate healthManager:weakSelf didReceiveMetric:metric];
             }
@@ -120,7 +120,7 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error {
     if ([characteristic.UUID isEqualToUUIDWithString:kMeasurementCharacteristicUUID]) {
-        id<HeartRateDataProtocol> healthRateData = [self.heartRateDataCollector heartBPMDataForCharacteristic:characteristic error:error];
+        id<ANHeartRateDataProtocol> healthRateData = [self.heartRateDataCollector heartBPMDataForCharacteristic:characteristic error:error];
         if ([self.delegate respondsToSelector:@selector(healthManager:didReceiveData:)]) {
             [self.delegate healthManager:self didReceiveData:healthRateData];
         }

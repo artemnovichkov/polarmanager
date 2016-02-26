@@ -1,5 +1,5 @@
 //
-//  HeartRateDataCollector.m
+//  ANHeartRateDataCollector.m
 //  PolarDemo
 //
 //  Created by Artem on 26/02/16.
@@ -7,19 +7,19 @@
 //
 
 @import CoreBluetooth;
-#import "HeartRateDataCollector.h"
-#import "HeartRateData.h"
-#import "MetricCalculator.h"
-#import "CaloriesCalculator.h"
+#import "ANHeartRateDataCollector.h"
+#import "ANHeartRateData.h"
+#import "ANMetricCalculator.h"
+#import "ANCaloriesCalculator.h"
 
-@interface HeartRateDataCollector ()
+@interface ANHeartRateDataCollector ()
 
 @property (nonatomic) NSMutableArray<NSNumber *> *storedHeartRate;
 @property (nonatomic) NSDate *collectingStartDate;
 
 @end
 
-@implementation HeartRateDataCollector
+@implementation ANHeartRateDataCollector
 
 - (instancetype)init {
     self = [super init];
@@ -32,10 +32,10 @@
 - (void)calculateMetricsForStartDate:(NSDate *)startDate {
     CGFloat duration = ([NSDate date].timeIntervalSince1970 - startDate.timeIntervalSince1970);
     duration /= 60.f * 60.f;
-    MetricCalculator *metricCalculator = [[MetricCalculator alloc] init];
-    CaloriesCalculator *caloriesCalculator = [[CaloriesCalculator alloc] init];
+    ANMetricCalculator *metricCalculator = [[ANMetricCalculator alloc] init];
+    ANCaloriesCalculator *caloriesCalculator = [[ANCaloriesCalculator alloc] init];
 #warning Some hardcode
-    id<MetricProtocol> metric = [metricCalculator calculateMetricForHeartRateData:self.storedHeartRate age:caloriesCalculator.age fitnessLevel:FitnessLevelBeginner duration:duration];
+    id<ANMetricProtocol> metric = [metricCalculator calculateMetricForHeartRateData:self.storedHeartRate age:caloriesCalculator.age fitnessLevel:FitnessLevelBeginner duration:duration];
     metric.burnedCalories = [caloriesCalculator burntCaloriesForAvgHR:metric.avgHR exerciseDuration:duration];
     if (self.calculatingDidFinishBlock) {
         self.calculatingDidFinishBlock(metric);
@@ -46,9 +46,9 @@
     [self.storedHeartRate removeAllObjects];
 }
 
-#pragma mark - HeartRateDataCollectorProtocol
+#pragma mark - ANHeartRateDataCollectorProtocol
 
-- (nullable id<HeartRateDataProtocol>)heartBPMDataForCharacteristic:(nonnull CBCharacteristic *)characteristic error:(nullable NSError *)error {
+- (nullable id<ANHeartRateDataProtocol>)heartBPMDataForCharacteristic:(nonnull CBCharacteristic *)characteristic error:(nullable NSError *)error {
     NSData *sensorData = characteristic.value;
     const uint8_t *reportData = sensorData.bytes;
     
@@ -84,7 +84,7 @@
         }
     }
     if (sensorData || !error) {
-        HeartRateData *heartRateData = [[HeartRateData alloc] init];
+        ANHeartRateData *heartRateData = [[ANHeartRateData alloc] init];
         heartRateData.bpm = bpm;
         heartRateData.rrIntervals = rrIntervals;
         return heartRateData;

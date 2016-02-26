@@ -1,5 +1,5 @@
 //
-//  MetricCalculatorProtocol.h
+//  ANMetricCalculatorProtocol.h
 //  PolarDemo
 //
 //  Created by Artem on 26/02/16.
@@ -7,7 +7,7 @@
 //
 
 @import UIKit;
-@protocol MetricProtocol;
+@protocol ANMetricProtocol;
 
 typedef NS_ENUM(NSUInteger, FitnessLevel) {
     FitnessLevelBeginner,
@@ -15,9 +15,9 @@ typedef NS_ENUM(NSUInteger, FitnessLevel) {
     FitnessLevelAdvanced
 };
 
-@protocol MetricCalculatorProtocol <NSObject>
+@protocol ANMetricCalculatorProtocol <NSObject>
 
-- (id<MetricProtocol>)calculateMetricForHeartRateData:(NSArray<NSNumber *> *)heartRateData
+- (id<ANMetricProtocol>)calculateMetricForHeartRateData:(NSArray<NSNumber *> *)heartRateData
                                                             age:(NSInteger)age
                                                    fitnessLevel:(FitnessLevel)fitnessLevel
                                                        duration:(CGFloat)duration;

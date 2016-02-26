@@ -7,9 +7,11 @@
 //
 
 @import UIKit;
+#import "ANMetricProtocol.h"
 
 @interface NSString (Additions)
 
 + (NSString *)formattedStringFromSeconds:(CGFloat)totalSeconds;
++ (NSString *)infoStringForMetric:(id<ANMetricProtocol>)metric;
 
 @end
