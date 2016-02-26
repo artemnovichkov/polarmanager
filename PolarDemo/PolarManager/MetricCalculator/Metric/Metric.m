@@ -22,7 +22,10 @@
 - (void)calculateMetricWithHeartRateData:(NSArray<NSNumber *> *)heartRateData
                                      age:(NSInteger)age
                                 duration:(CGFloat)duration {
-    
+    self.maxHR = 220 - age;
+    self.avgHR = [[heartRateData valueForKeyPath:@"@avg.self"] floatValue];
+    self.maxWorkoutHR = [[heartRateData valueForKeyPath:@"@max.self"] floatValue];
+    self.avgIntensity = self.avgHR / self.maxHR;
 }
 
 @end

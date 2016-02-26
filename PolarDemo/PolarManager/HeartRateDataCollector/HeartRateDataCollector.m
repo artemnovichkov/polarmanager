@@ -54,10 +54,6 @@
     NSLog(@"bpm: %i", bpm);
     if (self.needToCollectData) {
         [self.storedBpms addObject:@(bpm)];
-        self.averageBpm = [[self.storedBpms valueForKeyPath:@"@avg.self"] floatValue];
-        self.maxBpm = [[self.storedBpms valueForKeyPath:@"@max.self"] floatValue];
-        self.avgIntensity = self.averageBpm / self.maxBpm;
-        NSLog(@"avgIntensity %.1f", self.avgIntensity * 100);
     }
     
     if ((reportData[0] & 0x03) == 1) {
