@@ -42,6 +42,10 @@
     NSLog(@"Burnt %f", calories);
 }
 
+- (void)clearCollectedData {
+    self.storedBpms = [NSMutableArray array];
+}
+
 #pragma mark - HeartRateDataCollectorProtocol
 
 - (nullable id<HeartRateDataProtocol>)heartBPMDataForCharacteristic:(nonnull CBCharacteristic *)characteristic error:(nullable NSError *)error {

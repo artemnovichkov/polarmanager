@@ -29,7 +29,7 @@ static CGFloat const kFemaleFourthKoef = 20.4022;
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.weight = 82.f;
+        self.weight = 78.f;
         self.age = 22;
         self.genderType = GenderTypeMale;
     }

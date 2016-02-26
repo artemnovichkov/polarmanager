@@ -58,6 +58,10 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
     self.heartRateDataCollector.needToCollectData = NO;
 }
 
+- (void)clearCollectedHealthData {
+    [self.heartRateDataCollector clearCollectedData];
+}
+
 #pragma mark - CBCentralManagerDelegate
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {

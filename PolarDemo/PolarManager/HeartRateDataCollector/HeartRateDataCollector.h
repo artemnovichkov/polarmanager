@@ -15,4 +15,6 @@
 @property (nonatomic, copy) void (^finishBlock)(id<MetricProtocol>);
 @property (nonatomic) BOOL needToCollectData;
 
+- (void)clearCollectedData;
+
 @end

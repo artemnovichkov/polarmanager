@@ -18,6 +18,7 @@
 
 - (void)startCollectHealthData;
 - (void)stopCollectHealthData;
+- (void)clearCollectedHealthData;
 
 @end
 
