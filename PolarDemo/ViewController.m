@@ -49,19 +49,24 @@
 
 #pragma mark - Actions
 
-- (IBAction)startWorkoutButtonAction:(UIButton *)sender {
-    [self.healthManager startCollectHealthData];
-    self.workoutTimer = [NSTimer timerWithTimeInterval:0.05 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:self.workoutTimer forMode:NSRunLoopCommonModes];
-    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
-}
-
-- (IBAction)stopWorkoutButtonAction:(id)sender {
-    self.workoutTime = 0.f;
-    [self.workoutTimer invalidate];
-    self.workoutTimer = nil;
-    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
-    [self.healthManager stopCollectHealthData];
+- (IBAction)testWorkoutButtonAction:(UIButton *)sender {
+    if (sender.tag == 0) {
+        sender.tag = 1;
+        [sender setTitle:@"Stop Test Workout" forState:UIControlStateNormal];
+        [self.healthManager startCollectHealthData];
+        self.workoutTimer = [NSTimer timerWithTimeInterval:0.05 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:self.workoutTimer forMode:NSRunLoopCommonModes];
+        [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+    } else {
+        sender.tag = 0;
+        [sender setTitle:@"Start Test Workout" forState:UIControlStateNormal];
+        self.workoutTime = 0.f;
+        [self.workoutTimer invalidate];
+        self.workoutTimer = nil;
+        [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+        [self.healthManager stopCollectHealthData];
+    }
+    
 }
 
 #pragma mark - PolarManagerDelegate
