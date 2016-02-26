@@ -22,6 +22,10 @@ static CGFloat const kFemaleFourthKoef = 20.4022;
 
 @implementation CaloriesCalculator
 
+@synthesize weight;
+@synthesize age;
+@synthesize genderType;
+
 - (instancetype)init {
     self = [super init];
     if (self) {

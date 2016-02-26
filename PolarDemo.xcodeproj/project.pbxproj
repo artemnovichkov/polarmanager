@@ -46,6 +46,7 @@
 		AC6156DB1C7EB5CE0026D81B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACAA6F351C80287600AC5690 /* MetricCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetricCalculator.h; path = MetricCalculator/MetricCalculator.h; sourceTree = "<group>"; };
 		ACAA6F361C80287600AC5690 /* MetricCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MetricCalculator.m; path = MetricCalculator/MetricCalculator.m; sourceTree = "<group>"; };
+		ACAA6F381C802A7000AC5690 /* CaloriesCalculatorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaloriesCalculatorProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +77,7 @@
 		AC2CF8DA1C80110C009028EA /* CaloriesCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				ACAA6F381C802A7000AC5690 /* CaloriesCalculatorProtocol.h */,
 				AC2CF8DB1C80110C009028EA /* CaloriesCalculator.h */,
 				AC2CF8DC1C80110C009028EA /* CaloriesCalculator.m */,
 			);

@@ -7,19 +7,8 @@
 //
 
 @import UIKit;
+#import "CaloriesCalculatorProtocol.h"
 
-typedef NS_ENUM(NSInteger, GenderType) {
-    GenderTypeMale,
-    GenderTypeFemale
-};
-
-@interface CaloriesCalculator : NSObject
-
-@property (nonatomic) CGFloat weight;
-@property (nonatomic) NSInteger age;
-@property (nonatomic) GenderType genderType;
-
-//duration time in hours
-- (CGFloat)burntCaloriesForAvgHR:(CGFloat)avgHR exerciseDuration:(CGFloat)duration;
+@interface CaloriesCalculator : NSObject <CaloriesCalculatorProtocol>
 
 @end
