@@ -22,12 +22,15 @@
     [super viewDidLoad];
     CaloriesCalculator *calc = [[CaloriesCalculator alloc] init];
     NSLog(@"Burnt %f", [calc burntCaloriesForAvgHR:120.f exerciseDuration:0.2]);
-//    self.polarManager = [[PolarManager alloc] init];
-//    self.polarManager.delegate = self;
-//    [self.polarManager start];
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [self.polarManager stop];
-//    });
+    self.polarManager = [[PolarManager alloc] init];
+    self.polarManager.delegate = self;
+}
+- (IBAction)startWorkoutButtonAction:(UIButton *)sender {
+    sender.titleLabel.text = @"Started";
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        sender.titleLabel.text = @"Finished";
+        [self.polarManager stop];
+    });
 }
 
 - (void) doHeartBeat {
@@ -46,6 +49,30 @@
 }
 
 #pragma mark - PolarManagerDelegate
+
+- (void)polarManager:(PolarManager *)polarManager didUpdateState:(CBCentralManagerState)state {
+    NSString *statusString;
+    switch (state) {
+        case CBCentralManagerStatePoweredOff:
+            statusString = @"CoreBluetooth BLE hardware is powered off";
+            break;
+        case CBCentralManagerStatePoweredOn:
+            statusString = @"CoreBluetooth BLE hardware is powered on and ready";
+            break;
+        case CBCentralManagerStateUnauthorized:
+            statusString = @"CoreBluetooth BLE state is unauthorized";
+            break;
+        case CBCentralManagerStateUnknown:
+            statusString = @"CoreBluetooth BLE state is unknown";
+            break;
+        case CBCentralManagerStateUnsupported:
+            statusString = @"CoreBluetooth BLE hardware is unsupported on this platform";
+            break;
+        default:
+            break;
+    }
+    self.bluetoothStatusLabel.text = statusString;
+}
 
 - (void)polarManager:(PolarManager *)polarManager didReceivedData:(HeartRateData *)heartRateData {
     self.heartRate = heartRateData.bpm;

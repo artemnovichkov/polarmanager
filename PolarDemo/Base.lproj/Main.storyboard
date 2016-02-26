@@ -30,24 +30,43 @@
                                     <constraint firstAttribute="height" constant="150" id="o4l-2N-8US"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4qc-e1-JWE">
-                                <rect key="frame" x="279" y="126" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4qc-e1-JWE">
+                                <rect key="frame" x="300" y="126" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No connection" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FdP-Zb-qIH">
+                                <rect key="frame" x="8" y="575" width="584" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="psK-bQ-aI4">
+                                <rect key="frame" x="238" y="226" width="124" height="30"/>
+                                <state key="normal" title="Start test workout"/>
+                                <connections>
+                                    <action selector="startWorkoutButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IYf-kE-Cyf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="4qc-e1-JWE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3e0-wZ-CUh"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FdP-Zb-qIH" secondAttribute="bottom" constant="8" id="H0E-W2-KmQ"/>
                             <constraint firstItem="CHs-ej-Drm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="L1f-yf-rOg"/>
                             <constraint firstItem="Wlj-eW-ik6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ZJw-en-5Ki"/>
+                            <constraint firstItem="FdP-Zb-qIH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="Zj8-5v-aQ4"/>
                             <constraint firstItem="4qc-e1-JWE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="106" id="aSu-Rc-3nA"/>
                             <constraint firstItem="CHs-ej-Drm" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="48" id="hWW-io-Yj9"/>
+                            <constraint firstItem="psK-bQ-aI4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nXr-bU-jyK"/>
                             <constraint firstItem="Wlj-eW-ik6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tIX-nJ-vQ4"/>
+                            <constraint firstItem="psK-bQ-aI4" firstAttribute="top" secondItem="CHs-ej-Drm" secondAttribute="bottom" constant="8" id="wp5-22-qHV"/>
+                            <constraint firstAttribute="trailing" secondItem="FdP-Zb-qIH" secondAttribute="trailing" constant="8" id="zXH-7J-VK2"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bluetoothStatusLabel" destination="FdP-Zb-qIH" id="C6y-o9-FSf"/>
                         <outlet property="heartImageView" destination="CHs-ej-Drm" id="Gz8-vb-Fzw"/>
                         <outlet property="heartRateLabel" destination="4qc-e1-JWE" id="mRL-Gd-G64"/>
                         <outlet property="infoLabel" destination="Wlj-eW-ik6" id="qmd-54-w4Z"/>
@@ -55,6 +74,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="434" y="450"/>
         </scene>
     </scenes>
     <resources>
