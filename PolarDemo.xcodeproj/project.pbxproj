@@ -18,6 +18,7 @@
 		AC6156D51C7EB5CE0026D81B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6156D31C7EB5CE0026D81B /* Main.storyboard */; };
 		AC6156D71C7EB5CE0026D81B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC6156D61C7EB5CE0026D81B /* Assets.xcassets */; };
 		AC6156DA1C7EB5CE0026D81B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6156D81C7EB5CE0026D81B /* LaunchScreen.storyboard */; };
+		ACAA6F371C80287600AC5690 /* MetricCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAA6F361C80287600AC5690 /* MetricCalculator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,8 @@
 		AC6156D61C7EB5CE0026D81B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC6156D91C7EB5CE0026D81B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC6156DB1C7EB5CE0026D81B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACAA6F351C80287600AC5690 /* MetricCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetricCalculator.h; path = MetricCalculator/MetricCalculator.h; sourceTree = "<group>"; };
+		ACAA6F361C80287600AC5690 /* MetricCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MetricCalculator.m; path = MetricCalculator/MetricCalculator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +67,7 @@
 				AC2CF8E01C80110C009028EA /* HeartRateData */,
 				AC2CF8EA1C8011BF009028EA /* HeartRateDataCollector */,
 				AC2CF8DA1C80110C009028EA /* CaloriesCalculator */,
+				ACAA6F341C80286200AC5690 /* MetricCalculator */,
 				AC2CF8DD1C80110C009028EA /* Categories */,
 			);
 			path = PolarManager;
@@ -148,6 +152,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		ACAA6F341C80286200AC5690 /* MetricCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				ACAA6F351C80287600AC5690 /* MetricCalculator.h */,
+				ACAA6F361C80287600AC5690 /* MetricCalculator.m */,
+			);
+			name = MetricCalculator;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -219,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC6156D21C7EB5CE0026D81B /* ViewController.m in Sources */,
+				ACAA6F371C80287600AC5690 /* MetricCalculator.m in Sources */,
 				AC2CF8E91C80110C009028EA /* PolarManager.m in Sources */,
 				AC2CF8E71C80110C009028EA /* CBUUID+Additions.m in Sources */,
 				AC6156CF1C7EB5CE0026D81B /* AppDelegate.m in Sources */,

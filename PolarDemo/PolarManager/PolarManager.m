@@ -38,6 +38,8 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
     return self;
 }
 
+#pragma mark - Heart Data Collecting
+
 - (void)startCollectHealthData {
     if (self.centralManager.state == CBCentralManagerStatePoweredOn) {
         self.heartRateDataCollector.needToCollectData = YES;
@@ -46,7 +48,7 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
     }
 }
 
-- (void)stop {
+- (void)stopCollectHealthData {
     self.heartRateDataCollector.needToCollectData = NO;
 }
 
