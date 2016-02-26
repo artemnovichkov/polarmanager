@@ -19,6 +19,7 @@ typedef NS_ENUM(NSInteger, GenderType) {
 @property (nonatomic) NSInteger age;
 @property (nonatomic) GenderType genderType;
 
+//duration time in hours
 - (CGFloat)burntCaloriesForAvgHR:(CGFloat)avgHR exerciseDuration:(CGFloat)duration;
 
 @end
