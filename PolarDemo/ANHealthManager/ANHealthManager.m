@@ -11,9 +11,11 @@
 
 #import "CBUUID+Additions.h"
 
-static NSString *const kDeviceInformationUUID = @"180A";
+//Service UUIDs
+static NSString *const kDeviceInformationServiceUUID = @"180A";
 static NSString *const kHeartRateServiceUUID = @"180D";
 
+//Characteristic UUIDs
 static NSString *const kMeasurementCharacteristicUUID = @"2A37";
 static NSString *const kBodyLocationCharacteristicUUID = @"2A38";
 static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
@@ -21,7 +23,6 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
 @interface ANHealthManager () <CBCentralManagerDelegate, CBPeripheralDelegate>
 
 @property (nonatomic) CBCentralManager *centralManager;
-@property (nonatomic) CBPeripheral *connectedPeripheral;
 @property (nonatomic) ANHeartRateDataCollector *heartRateDataCollector;
 
 @end
@@ -43,7 +44,7 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
     return self;
 }
 
-#pragma mark - Heart Data Collecting
+#pragma mark - ANHealthManagerProtocol
 
 - (void)startCollectHealthData {
     if (self.centralManager.state == CBCentralManagerStatePoweredOn) {
@@ -78,7 +79,6 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
     if (localName.length > 0) {
         NSLog(@"Found the heart rate monitor: %@", localName);
         [central stopScan];
-        self.connectedPeripheral = peripheral;
         [central connectPeripheral:peripheral options:nil];
     }
 }
@@ -108,7 +108,7 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
                 NSLog(@"Found body sensor location characteristic");
             }
         }
-    } else if ([service.UUID isEqualToUUIDWithString:kDeviceInformationUUID]) {
+    } else if ([service.UUID isEqualToUUIDWithString:kDeviceInformationServiceUUID]) {
         for (CBCharacteristic *characteristic in service.characteristics) {
             if ([characteristic.UUID isEqualToUUIDWithString:kManufacturerNameCharacteristicUUID]) {
                 [peripheral readValueForCharacteristic:characteristic];
