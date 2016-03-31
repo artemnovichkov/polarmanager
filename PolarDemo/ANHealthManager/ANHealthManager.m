@@ -24,6 +24,7 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
 
 @property (nonatomic) CBCentralManager *centralManager;
 @property (nonatomic) ANHeartRateDataCollector *heartRateDataCollector;
+@property (nonatomic) CBPeripheral *connectedPeripheral;
 
 @end
 
@@ -79,6 +80,7 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
     if (localName.length > 0) {
         NSLog(@"Found the heart rate monitor: %@", localName);
         [central stopScan];
+        self.connectedPeripheral = peripheral;
         [central connectPeripheral:peripheral options:nil];
     }
 }
