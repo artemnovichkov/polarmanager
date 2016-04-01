@@ -1,13 +1,13 @@
 //
-//  NAErrorFactory.h
+//  ANErrorFactory.h
 //  PolarDemo
 //
 //  Created by Artem on 26/02/16.
 //  Copyright © 2016 Rosberry. All rights reserved.
 //
 
-#import "NAErrorFactoryProtocol.h"
+#import "ANErrorFactoryProtocol.h"
 
-@interface NAErrorFactory : NSObject <NAErrorFactoryProtocol>
+@interface ANErrorFactory : NSObject <ANErrorFactoryProtocol>
 
 @end

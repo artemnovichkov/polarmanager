@@ -8,6 +8,7 @@
 
 #import "ANHealthManager.h"
 #import "ANHeartRateDataCollector.h"
+#import "ANInput.h"
 
 #import "CBUUID+Additions.h"
 
@@ -36,6 +37,9 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
         self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
         self.heartRateDataCollector = [[ANHeartRateDataCollector alloc] init];
         __weak typeof(self) weakSelf = self;
+        [self.heartRateDataCollector setCalculatingWillStartBlock:^id<ANInputProtocol> {
+            return weakSelf.input;
+        }];
         [self.heartRateDataCollector setCalculatingDidFinishBlock:^(id<ANMetricProtocol> metric) {
             if ([weakSelf.delegate respondsToSelector:@selector(healthManager:didReceiveMetric:)]) {
                 [weakSelf.delegate healthManager:weakSelf didReceiveMetric:metric];
@@ -48,6 +52,7 @@ static NSString *const kManufacturerNameCharacteristicUUID = @"2A29";
 #pragma mark - ANHealthManagerProtocol
 
 - (void)startCollectHealthData {
+    NSAssert(self.input, @"Add input before start collecting data.");
     if (self.centralManager.state == CBCentralManagerStatePoweredOn) {
         self.heartRateDataCollector.needToCollectData = YES;
     } else {

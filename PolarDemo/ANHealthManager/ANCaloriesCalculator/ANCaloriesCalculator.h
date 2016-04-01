@@ -6,7 +6,7 @@
 //  Copyright © 2016 Rosberry. All rights reserved.
 //
 
-@import UIKit;
+#import <UIKit/UIKit.h>
 #import "ANCaloriesCalculatorProtocol.h"
 
 @interface ANCaloriesCalculator : NSObject <ANCaloriesCalculatorProtocol>

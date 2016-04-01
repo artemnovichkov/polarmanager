@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  ANAppDelegate.h
 //  PolarDemo
 //
 //  Created by Artem on 25/02/16.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface ANAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

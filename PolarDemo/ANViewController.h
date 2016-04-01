@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ANViewController.h
 //  PolarDemo
 //
 //  Created by Artem on 25/02/16.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ANViewController : UIViewController
 
 @end
 

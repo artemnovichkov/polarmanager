@@ -1,18 +1,18 @@
 //
-//  AppDelegate.m
+//  ANAppDelegate.m
 //  PolarDemo
 //
 //  Created by Artem on 25/02/16.
 //  Copyright © 2016 Rosberry. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "ANAppDelegate.h"
 
-@interface AppDelegate ()
+@interface ANAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation ANAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

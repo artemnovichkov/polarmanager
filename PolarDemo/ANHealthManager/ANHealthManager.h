@@ -12,14 +12,16 @@
 #import "ANMetricProtocol.h"
 #import "ANHealthManagerProtocol.h"
 
-@protocol HealthManagerDelegate;
+@protocol ANHealthManagerDelegate;
+@protocol ANInputProtocol;
 @interface ANHealthManager : NSObject <ANHealthManagerProtocol>
 
-@property (nonatomic, weak) id<HealthManagerDelegate> delegate;
+@property (nonatomic, weak) id<ANHealthManagerDelegate> delegate;
+@property (nonatomic) id<ANInputProtocol> input;
 
 @end
 
-@protocol HealthManagerDelegate <NSObject>
+@protocol ANHealthManagerDelegate <NSObject>
 
 @optional
 - (void)healthManager:(ANHealthManager *)healthManager didUpdateState:(CBCentralManagerState)state;

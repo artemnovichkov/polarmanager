@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A1450BD1CAE616800AAB309 /* ANInput.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1450BC1CAE616800AAB309 /* ANInput.m */; };
 		AC1772951C80579D00D5F37E /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1772941C80579D00D5F37E /* NSString+Additions.m */; };
 		AC6156CC1C7EB5CE0026D81B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6156CB1C7EB5CE0026D81B /* main.m */; };
-		AC6156CF1C7EB5CE0026D81B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6156CE1C7EB5CE0026D81B /* AppDelegate.m */; };
-		AC6156D21C7EB5CE0026D81B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6156D11C7EB5CE0026D81B /* ViewController.m */; };
+		AC6156CF1C7EB5CE0026D81B /* ANAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6156CE1C7EB5CE0026D81B /* ANAppDelegate.m */; };
+		AC6156D21C7EB5CE0026D81B /* ANViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6156D11C7EB5CE0026D81B /* ANViewController.m */; };
 		AC6156D51C7EB5CE0026D81B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6156D31C7EB5CE0026D81B /* Main.storyboard */; };
 		AC6156D71C7EB5CE0026D81B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC6156D61C7EB5CE0026D81B /* Assets.xcassets */; };
 		AC6156DA1C7EB5CE0026D81B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6156D81C7EB5CE0026D81B /* LaunchScreen.storyboard */; };
@@ -21,18 +22,21 @@
 		ACB7F3651C80635D00A73FC4 /* ANMetric.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB7F3591C80635D00A73FC4 /* ANMetric.m */; };
 		ACB7F3661C80635D00A73FC4 /* ANMetricCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB7F35C1C80635D00A73FC4 /* ANMetricCalculator.m */; };
 		ACB7F3671C80635D00A73FC4 /* CBUUID+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB7F3601C80635D00A73FC4 /* CBUUID+Additions.m */; };
-		ACB7F36A1C8063FD00A73FC4 /* NAErrorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB7F3691C8063FD00A73FC4 /* NAErrorFactory.m */; };
+		ACB7F36A1C8063FD00A73FC4 /* ANErrorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB7F3691C8063FD00A73FC4 /* ANErrorFactory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A1450BB1CAE616800AAB309 /* ANInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANInput.h; sourceTree = "<group>"; };
+		0A1450BC1CAE616800AAB309 /* ANInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANInput.m; sourceTree = "<group>"; };
+		0A1450BE1CAE618200AAB309 /* ANInputProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANInputProtocol.h; sourceTree = "<group>"; };
 		AC1772931C80579D00D5F37E /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
 		AC1772941C80579D00D5F37E /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
 		AC6156C71C7EB5CE0026D81B /* PolarDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PolarDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC6156CB1C7EB5CE0026D81B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		AC6156CD1C7EB5CE0026D81B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		AC6156CE1C7EB5CE0026D81B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AC6156D01C7EB5CE0026D81B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		AC6156D11C7EB5CE0026D81B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AC6156CD1C7EB5CE0026D81B /* ANAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANAppDelegate.h; sourceTree = "<group>"; };
+		AC6156CE1C7EB5CE0026D81B /* ANAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANAppDelegate.m; sourceTree = "<group>"; };
+		AC6156D01C7EB5CE0026D81B /* ANViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANViewController.h; sourceTree = "<group>"; };
+		AC6156D11C7EB5CE0026D81B /* ANViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANViewController.m; sourceTree = "<group>"; };
 		AC6156D41C7EB5CE0026D81B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AC6156D61C7EB5CE0026D81B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC6156D91C7EB5CE0026D81B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,9 +61,9 @@
 		ACB7F35D1C80635D00A73FC4 /* ANMetricCalculatorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANMetricCalculatorProtocol.h; sourceTree = "<group>"; };
 		ACB7F35F1C80635D00A73FC4 /* CBUUID+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBUUID+Additions.h"; sourceTree = "<group>"; };
 		ACB7F3601C80635D00A73FC4 /* CBUUID+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBUUID+Additions.m"; sourceTree = "<group>"; };
-		ACB7F3681C8063FD00A73FC4 /* NAErrorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NAErrorFactory.h; path = ANHealthManager/NAErrorFactory/NAErrorFactory.h; sourceTree = "<group>"; };
-		ACB7F3691C8063FD00A73FC4 /* NAErrorFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NAErrorFactory.m; path = ANHealthManager/NAErrorFactory/NAErrorFactory.m; sourceTree = "<group>"; };
-		ACB7F36C1C80642C00A73FC4 /* NAErrorFactoryProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NAErrorFactoryProtocol.h; path = ANHealthManager/NAErrorFactory/NAErrorFactoryProtocol.h; sourceTree = "<group>"; };
+		ACB7F3681C8063FD00A73FC4 /* ANErrorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANErrorFactory.h; path = ANHealthManager/NAErrorFactory/ANErrorFactory.h; sourceTree = "<group>"; };
+		ACB7F3691C8063FD00A73FC4 /* ANErrorFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ANErrorFactory.m; path = ANHealthManager/NAErrorFactory/ANErrorFactory.m; sourceTree = "<group>"; };
+		ACB7F36C1C80642C00A73FC4 /* ANErrorFactoryProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ANErrorFactoryProtocol.h; path = ANHealthManager/NAErrorFactory/ANErrorFactoryProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A1450BA1CAE614900AAB309 /* ANInput */ = {
+			isa = PBXGroup;
+			children = (
+				0A1450BB1CAE616800AAB309 /* ANInput.h */,
+				0A1450BC1CAE616800AAB309 /* ANInput.m */,
+				0A1450BE1CAE618200AAB309 /* ANInputProtocol.h */,
+			);
+			path = ANInput;
+			sourceTree = "<group>";
+		};
 		AC6156BE1C7EB5CE0026D81B = {
 			isa = PBXGroup;
 			children = (
@@ -93,10 +107,10 @@
 			isa = PBXGroup;
 			children = (
 				ACB7F3461C80635D00A73FC4 /* ANHealthManager */,
-				AC6156CD1C7EB5CE0026D81B /* AppDelegate.h */,
-				AC6156CE1C7EB5CE0026D81B /* AppDelegate.m */,
-				AC6156D01C7EB5CE0026D81B /* ViewController.h */,
-				AC6156D11C7EB5CE0026D81B /* ViewController.m */,
+				AC6156CD1C7EB5CE0026D81B /* ANAppDelegate.h */,
+				AC6156CE1C7EB5CE0026D81B /* ANAppDelegate.m */,
+				AC6156D01C7EB5CE0026D81B /* ANViewController.h */,
+				AC6156D11C7EB5CE0026D81B /* ANViewController.m */,
 				AC1772931C80579D00D5F37E /* NSString+Additions.h */,
 				AC1772941C80579D00D5F37E /* NSString+Additions.m */,
 				AC6156D31C7EB5CE0026D81B /* Main.storyboard */,
@@ -165,6 +179,7 @@
 		ACB7F3561C80635D00A73FC4 /* ANMetricCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				0A1450BA1CAE614900AAB309 /* ANInput */,
 				ACB7F3571C80635D00A73FC4 /* ANMetric */,
 				ACB7F35B1C80635D00A73FC4 /* ANMetricCalculator.h */,
 				ACB7F35C1C80635D00A73FC4 /* ANMetricCalculator.m */,
@@ -195,9 +210,9 @@
 		ACB7F36B1C80641800A73FC4 /* NAErrorFactory */ = {
 			isa = PBXGroup;
 			children = (
-				ACB7F36C1C80642C00A73FC4 /* NAErrorFactoryProtocol.h */,
-				ACB7F3681C8063FD00A73FC4 /* NAErrorFactory.h */,
-				ACB7F3691C8063FD00A73FC4 /* NAErrorFactory.m */,
+				ACB7F36C1C80642C00A73FC4 /* ANErrorFactoryProtocol.h */,
+				ACB7F3681C8063FD00A73FC4 /* ANErrorFactory.h */,
+				ACB7F3691C8063FD00A73FC4 /* ANErrorFactory.m */,
 			);
 			name = NAErrorFactory;
 			path = ..;
@@ -229,6 +244,7 @@
 		AC6156BF1C7EB5CE0026D81B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = AN;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Rosberry;
 				TargetAttributes = {
@@ -274,16 +290,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACB7F3611C80635D00A73FC4 /* ANCaloriesCalculator.m in Sources */,
-				AC6156D21C7EB5CE0026D81B /* ViewController.m in Sources */,
+				AC6156D21C7EB5CE0026D81B /* ANViewController.m in Sources */,
 				ACB7F3621C80635D00A73FC4 /* ANHealthManager.m in Sources */,
 				ACB7F3651C80635D00A73FC4 /* ANMetric.m in Sources */,
-				ACB7F36A1C8063FD00A73FC4 /* NAErrorFactory.m in Sources */,
+				ACB7F36A1C8063FD00A73FC4 /* ANErrorFactory.m in Sources */,
 				AC1772951C80579D00D5F37E /* NSString+Additions.m in Sources */,
 				ACB7F3671C80635D00A73FC4 /* CBUUID+Additions.m in Sources */,
+				0A1450BD1CAE616800AAB309 /* ANInput.m in Sources */,
 				ACB7F3631C80635D00A73FC4 /* ANHeartRateData.m in Sources */,
 				ACB7F3661C80635D00A73FC4 /* ANMetricCalculator.m in Sources */,
 				ACB7F3641C80635D00A73FC4 /* ANHeartRateDataCollector.m in Sources */,
-				AC6156CF1C7EB5CE0026D81B /* AppDelegate.m in Sources */,
+				AC6156CF1C7EB5CE0026D81B /* ANAppDelegate.m in Sources */,
 				AC6156CC1C7EB5CE0026D81B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

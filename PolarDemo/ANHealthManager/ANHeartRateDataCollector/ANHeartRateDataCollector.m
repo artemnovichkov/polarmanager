@@ -34,8 +34,9 @@
     duration /= 60.f * 60.f;
     ANMetricCalculator *metricCalculator = [[ANMetricCalculator alloc] init];
     ANCaloriesCalculator *caloriesCalculator = [[ANCaloriesCalculator alloc] init];
+    caloriesCalculator.input = self.calculatingWillStartBlock();
 #warning Some hardcode
-    id<ANMetricProtocol> metric = [metricCalculator calculateMetricForHeartRateData:self.storedHeartRate age:caloriesCalculator.age fitnessLevel:FitnessLevelBeginner duration:duration];
+    id<ANMetricProtocol> metric = [metricCalculator calculateMetricForHeartRateData:self.storedHeartRate age:caloriesCalculator.input.age fitnessLevel:FitnessLevelBeginner duration:duration];
     metric.burnedCalories = [caloriesCalculator burntCaloriesForAvgHR:metric.avgHR exerciseDuration:duration];
     if (self.calculatingDidFinishBlock) {
         self.calculatingDidFinishBlock(metric);

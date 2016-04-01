@@ -8,16 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, GenderType) {
-    GenderTypeMale,
-    GenderTypeFemale
-};
-
+@protocol ANInputProtocol;
 @protocol ANCaloriesCalculatorProtocol <NSObject>
 
-@property (nonatomic) CGFloat weight;
-@property (nonatomic) NSInteger age;
-@property (nonatomic) GenderType genderType;
+@property (nonatomic) id<ANInputProtocol> input;
 
 //duration time in hours
 - (CGFloat)burntCaloriesForAvgHR:(CGFloat)avgHR exerciseDuration:(CGFloat)duration;

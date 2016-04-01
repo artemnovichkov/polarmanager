@@ -9,9 +9,11 @@
 @import UIKit;
 #import "ANHeartRateDataCollectorProtocol.h"
 #import "ANMetricProtocol.h"
+#import "ANInputProtocol.h"
 
 @interface ANHeartRateDataCollector : NSObject <ANHeartRateDataCollectorProtocol>
 
+@property (nonatomic, copy) id<ANInputProtocol>(^calculatingWillStartBlock)();
 @property (nonatomic, copy) void (^calculatingDidFinishBlock)(id<ANMetricProtocol>);
 @property (nonatomic) BOOL needToCollectData;
 

@@ -1,17 +1,18 @@
 //
-//  ViewController.m
+//  ANViewController.m
 //  PolarDemo
 //
 //  Created by Artem on 25/02/16.
 //  Copyright © 2016 Rosberry. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "ANViewController.h"
 #import "ANHealthManager.h"
+#import "ANInput.h"
 
 #import "NSString+Additions.h"
 
-@interface ViewController () <HealthManagerDelegate>
+@interface ANViewController () <ANHealthManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *bluetoothStatusLabel;
 @property (weak, nonatomic) IBOutlet UILabel *heartRateLabel;
@@ -27,12 +28,19 @@
 
 @end
 
-@implementation ViewController
+@implementation ANViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.healthManager = [[ANHealthManager alloc] init];
     self.healthManager.delegate = self;
+    
+    ANInput *input = [[ANInput alloc] init];
+    input.weight = 175.f;
+    input.age = 26;
+    input.genderType = GenderTypeMale;
+    
+    self.healthManager.input = input;
 }
 
 - (void)updateTime {

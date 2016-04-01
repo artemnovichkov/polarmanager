@@ -1,5 +1,5 @@
 //
-//  NAErrorFactoryProtocol.h
+//  ANErrorFactoryProtocol.h
 //  NiceSocial
 //
 //  Created by Artem on 29/01/16.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol NAErrorFactoryProtocol <NSObject>
+@protocol ANErrorFactoryProtocol <NSObject>
 
 + (nullable NSError *)errorForKey:(nonnull NSString *)errorKey;
 
