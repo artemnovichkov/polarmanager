@@ -1,6 +1,6 @@
 # Polar Manager
 
-Framework for woring with heart rate monitors (Polar, Wahoo etc.). 
+Framework for working with heart rate monitors (Polar, Wahoo etc). 
 
 ### Features
 
