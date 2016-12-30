@@ -1,25 +1,30 @@
 # Polar Manager
 
-Библиотека  для работы с мониторами сердечного пульса (Polar, Wahoo etc.). 
+Framework for woring with heart rate monitors (Polar, Wahoo etc.). 
 
-  - Подключение к устройствам, получение характеристик и постоянный мониторинг пульса;
-  - Расчет метрик выполнения физических упражнений: максимальный и средний пульсы, средняя и процентная интенсивности, время выполнения;
-  - Расчет сожженых калорий.
+### Features
+
+  - Connection to devices, characteristic reading and constant pulse monitoring;
+  - Metric calculation for physical exercises: maximum and average pulses, average and percent intencity, exercise duration;
+  - Burned calories calculation.
 
 ### Installation
 
-Скопировать папку ANHealthManager в свой проект.
+Copy ANHealthManager folder into your project folder.
 
 ### Example
 
-Запустить проект PolarDemo из репозитория.
+Run PolarDemo project from repo.
 
 ### Todos
 
- - Сохранение подключенного устройства;
- - Расчет калорий в реальнм времени.
+ - Saving of connected device;
+ - Calories calculation in real time.
 
-License
-----
+### Author
 
-MIT
+Artem Novichkov, novichkoff93@gmail.com
+
+### License
+
+TransitionRouter is available under the MIT license. See the LICENSE file for more info.
